@@ -1,4 +1,4 @@
-package by.epam.pavelshakhlovich.shapes.entity;
+package by.epam.pavelshakhlovich.shape.entity;
 
 public class Tetrahedron extends Shape {
     private Point vertexA;
@@ -6,9 +6,9 @@ public class Tetrahedron extends Shape {
     private Point vertexC;
     private Point vertexD;
 
-    public Tetrahedron(Point vertexA, Point vertexB, Point pointC, Point pointD) {
-        this.vertexA = vertexA;
-        this.vertexB = vertexB;
+    public Tetrahedron(Point pointA, Point pointB, Point pointC, Point pointD) {
+        this.vertexA = pointA;
+        this.vertexB = pointB;
         this.vertexC = pointC;
         this.vertexD = pointD;
     }

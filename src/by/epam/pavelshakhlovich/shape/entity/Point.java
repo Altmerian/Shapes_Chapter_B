@@ -1,4 +1,4 @@
-package by.epam.pavelshakhlovich.shapes.entity;
+package by.epam.pavelshakhlovich.shape.entity;
 
 public class Point {
     private double x;
@@ -15,11 +15,11 @@ public class Point {
         return x;
     }
 
-    public double getZ() {
-        return z;
-    }
-
     public double getY() {
         return y;
+    }
+
+    public double getZ() {
+        return z;
     }
 }
