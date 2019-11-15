@@ -1,17 +1,18 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.FourPoints;
+import by.epam.pavelshakhlovich.shape.entity.InvalidLineException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DataParserTest {
-    private final static String VALID_STRING = "1.0 -3.0 2.0; 5.0 -3.0 0.0; -1 -3.0 -3; 2.0 4.0 1.0";
-    private final static String INVALID_STRING = "1.0a 3.0 4.5; 2.0  1.5  42; -1  -3 -54; 2.5 4.0 45";
+    private final static String VALID_STRING = "Tetrahedron 1.0 -3.0 2.0; 5.0 -3.0 0.0; -1 -3.0 -3; 2.0 4.0 1.0";
+    private final static String INVALID_STRING = "Tetrahedron 1.0a 3.0 4.5; 2.0  1.5  42; -1  -3 -54; 2.5 4.0 45";
     private static DataParser parser;
     private static Point[] pointsExpected;
 
@@ -29,13 +30,13 @@ public class DataParserTest {
     }
 
     @Test
-    public void testIsValid() {
-        Assert.assertTrue(VALID_STRING.matches("(-?\\d[,.]*\\d*[;\\s]*){12}"), "Regex checking");
+    public void testIsValidLine() {
+        Assert.assertTrue(parser.isValid(VALID_STRING), "Regex checking");
     }
 
     @Test
-    public void testIsInValid() {
-        Assert.assertFalse(INVALID_STRING.matches("(-?\\d[,.]*\\d*[;\\s]*){12}"));
+    public void testIsInValidLine() {
+        Assert.assertFalse(parser.isValid(INVALID_STRING));
     }
 
     @Test
@@ -45,13 +46,23 @@ public class DataParserTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test (expectedExceptions = InvalidLineException.class)
+    public void testInvalidLineException() {
+        List<String> lines = new ArrayList<>();
+        lines.add(INVALID_STRING);
+        ValidData actual = parser.parseData(lines);
+
+    }
+
     @Test
     public void testParseData() {
         List<String> lines = new ArrayList<>();
         lines.add(VALID_STRING);
-        List<FourPoints> expected = new ArrayList<>();
-        expected.add(new FourPoints(pointsExpected));
-        List<FourPoints> actual = parser.parseData(lines);
+        List<String> expectedNames = new ArrayList<>();
+        expectedNames.add("Tetrahedron");
+        List<Point> expectedPoints = new ArrayList<>(Arrays.asList(pointsExpected));
+        ValidData expected = new ValidData(expectedNames,expectedPoints );
+        ValidData actual = parser.parseData(lines);
         Assert.assertEquals(actual, expected);
     }
 }

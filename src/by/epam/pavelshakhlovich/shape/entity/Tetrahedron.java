@@ -1,5 +1,7 @@
 package by.epam.pavelshakhlovich.shape.entity;
 
+import by.epam.pavelshakhlovich.shape.action.TetrahedronAction;
+
 public class Tetrahedron extends Shape {
     private Point vertexA;
     private Point vertexB;
@@ -12,6 +14,11 @@ public class Tetrahedron extends Shape {
         this.vertexB = pointB;
         this.vertexC = pointC;
         this.vertexD = pointD;
+    }
+
+    @Override
+    public void becomeChosen() {
+        new TetrahedronAction(this).doAction();
     }
 
     public Point getVertexA() {

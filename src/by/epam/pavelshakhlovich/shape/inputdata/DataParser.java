@@ -1,31 +1,42 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.FourPoints;
+import by.epam.pavelshakhlovich.shape.entity.InvalidLineException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
+import com.google.common.annotations.VisibleForTesting;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataParser {
 
-    public List<FourPoints> parseData(List<String> lines) {
-        List<FourPoints> data = new ArrayList<>();
+    public ValidData parseData(List<String> lines) {
+        ValidData data = new ValidData();
         for (String line : lines) {
+            //todo group parsing
             if (isValid(line)) {
-                FourPoints points = new FourPoints(this.parsePoints(line));
-                data.add(points);
+                Point[] points = parsePoints(line);
+                String name = parseName(line);
+                data.addPoints(points);
+                data.addName(name);
             } else {
-                throw new IllegalArgumentException("Incorrect data in line " + lines.indexOf(line));
+                throw new InvalidLineException("Incorrect data in line " + lines.indexOf(line));
             }
         }
         return data;
     }
 
-    public boolean isValid(String line) {
-        return line.matches("(-?\\d[,.]*\\d*[;\\s]*){12}");
+    @VisibleForTesting
+    boolean isValid(String line) {
+        return line.matches("([a-zA-Z]+\\s+)(-?\\d[,.]*\\d*[;\\s]*){12}");
     }
 
-    public Point[] parsePoints (String line) {
+    private String parseName(String line) {
+        //todo this
+        return null;
+    }
+
+    @VisibleForTesting
+    Point[] parsePoints (String line) {
+        //todo this
         String [] source = line.trim().split("[;\\s]+");
         Point[] points = new Point[4];
 
