@@ -1,5 +1,6 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
+import by.epam.pavelshakhlovich.shape.entity.FourPoints;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 
 import java.util.ArrayList;
@@ -7,10 +8,10 @@ import java.util.List;
 
 public class DataParser {
 
-    public List<FourPoints> parseData (List<String> lines) {
+    public List<FourPoints> parseData(List<String> lines) {
         List<FourPoints> data = new ArrayList<>();
         for (String line : lines) {
-            if (line.matches("(\\d([,.]\\d*)*){12}")) {
+            if (isValid(line)) {
                 FourPoints points = new FourPoints(this.parsePoints(line));
                 data.add(points);
             } else {
@@ -20,8 +21,12 @@ public class DataParser {
         return data;
     }
 
-    private Point[] parsePoints (String line) {
-        String [] source = line.trim().split("(?<=[\\s;])");
+    public boolean isValid(String line) {
+        return line.matches("(-?\\d[,.]*\\d*[;\\s]*){12}");
+    }
+
+    public Point[] parsePoints (String line) {
+        String [] source = line.trim().split("[;\\s]+");
         Point[] points = new Point[4];
 
         points[0] = new Point(

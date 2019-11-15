@@ -1,11 +1,9 @@
-package by.epam.pavelshakhlovich.shape.inputdata;
-
-import by.epam.pavelshakhlovich.shape.entity.Point;
+package by.epam.pavelshakhlovich.shape.entity;
 
 public class FourPoints {
     private Point[] points;
 
-    FourPoints(Point[] points) {
+    public FourPoints(Point[] points) {
         this.points = points;
     }
 
