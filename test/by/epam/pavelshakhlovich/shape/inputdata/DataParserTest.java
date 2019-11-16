@@ -2,6 +2,7 @@ package by.epam.pavelshakhlovich.shape.inputdata;
 
 import by.epam.pavelshakhlovich.shape.entity.InvalidLineException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
+import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -31,18 +32,20 @@ public class DataParserTest {
 
     @Test
     public void testIsValidLine() {
-        Assert.assertTrue(parser.isValid(VALID_STRING), "Regex checking");
+        ShapeType actualShapeType = parser.parseShapeType(VALID_STRING).get();
+        ShapeType expectedShapeType = ShapeType.TETRAHEDRON;
+        Assert.assertEquals(actualShapeType, expectedShapeType, "Regex checking");
     }
 
     @Test
     public void testIsInValidLine() {
-        Assert.assertFalse(parser.isValid(INVALID_STRING));
+        Assert.assertFalse(parser.parseShapeType(INVALID_STRING).isPresent());
     }
 
     @Test
     public void testParsePoints() {
         Point[] expected = pointsExpected;
-        Point[] actual = parser.parsePoints(VALID_STRING);
+        Point[] actual = parser.parsePoints(VALID_STRING, ShapeType.TETRAHEDRON);
         Assert.assertEquals(actual, expected);
     }
 
@@ -50,19 +53,17 @@ public class DataParserTest {
     public void testInvalidLineException() {
         List<String> lines = new ArrayList<>();
         lines.add(INVALID_STRING);
-        ValidData actual = parser.parseData(lines);
-
+        DataObject actual = parser.parseData(lines);
     }
 
-    @Test
+    @Test //How to assertEquals with 2 lists?
     public void testParseData() {
         List<String> lines = new ArrayList<>();
         lines.add(VALID_STRING);
-        List<String> expectedNames = new ArrayList<>();
-        expectedNames.add("Tetrahedron");
-        List<Point> expectedPoints = new ArrayList<>(Arrays.asList(pointsExpected));
-        ValidData expected = new ValidData(expectedNames,expectedPoints );
-        ValidData actual = parser.parseData(lines);
+        List<ShapeType> expectedShapes = new ArrayList<>();
+        expectedShapes.add(ShapeType.TETRAHEDRON);
+        DataObject expected = new DataObject(expectedShapes, Arrays.asList(pointsExpected));
+        DataObject actual = parser.parseData(lines);
         Assert.assertEquals(actual, expected);
     }
 }

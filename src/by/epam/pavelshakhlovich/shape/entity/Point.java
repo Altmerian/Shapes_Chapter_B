@@ -12,11 +12,11 @@ public class Point {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
 
-        Point point = (Point) o;
+        Point point = (Point) obj;
 
         if (Double.compare(point.x, x) != 0) return false;
         if (Double.compare(point.y, y) != 0) return false;
@@ -26,14 +26,10 @@ public class Point {
     @Override
     public int hashCode() {
         int result;
-        long temp;
-        temp = Double.doubleToLongBits(x);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(z);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        result = (int) x;
+        result = 31 * result + (int) y;
+        result = 31 * result + (int) z;
+        return result * 7;
     }
 
     public double getX() {

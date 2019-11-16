@@ -1,6 +1,7 @@
 package by.epam.pavelshakhlovich.shape.action;
 
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
+import by.epam.pavelshakhlovich.shape.util.MathHelper;
 
 import static java.lang.Math.*;
 
@@ -13,29 +14,12 @@ public class TetrahedronCalculator {
     private double sideCD;
 
     public TetrahedronCalculator(Tetrahedron tetrahedron) {
-        this.sideAB = sqrt(pow(tetrahedron.getVertexA().getX() - tetrahedron.getVertexB().getX(), 2) +
-                pow(tetrahedron.getVertexA().getY() - tetrahedron.getVertexB().getY(), 2) +
-                pow(tetrahedron.getVertexA().getZ() - tetrahedron.getVertexB().getZ(), 2));
-
-        this.sideBC = sqrt(pow(tetrahedron.getVertexB().getX() - tetrahedron.getVertexC().getX(), 2) +
-                pow(tetrahedron.getVertexB().getY() - tetrahedron.getVertexC().getY(), 2) +
-                pow(tetrahedron.getVertexB().getZ() - tetrahedron.getVertexC().getZ(), 2));
-
-        this.sideCA = sqrt(pow(tetrahedron.getVertexC().getX() - tetrahedron.getVertexA().getX(), 2) +
-                pow(tetrahedron.getVertexC().getY() - tetrahedron.getVertexA().getY(), 2) +
-                pow(tetrahedron.getVertexC().getZ() - tetrahedron.getVertexA().getZ(), 2));
-
-        this.sideAD = sqrt(pow(tetrahedron.getVertexA().getX() - tetrahedron.getVertexD().getX(), 2) +
-                pow(tetrahedron.getVertexA().getY() - tetrahedron.getVertexD().getY(), 2) +
-                pow(tetrahedron.getVertexA().getZ() - tetrahedron.getVertexD().getZ(), 2));
-
-        this.sideBD = sqrt(pow(tetrahedron.getVertexB().getX() - tetrahedron.getVertexD().getX(), 2) +
-                pow(tetrahedron.getVertexB().getY() - tetrahedron.getVertexD().getY(), 2) +
-                pow(tetrahedron.getVertexB().getZ() - tetrahedron.getVertexD().getZ(), 2));
-
-        this.sideCD = sqrt(pow(tetrahedron.getVertexC().getX() - tetrahedron.getVertexD().getX(), 2) +
-                pow(tetrahedron.getVertexC().getY() - tetrahedron.getVertexD().getY(), 2) +
-                pow(tetrahedron.getVertexC().getZ() - tetrahedron.getVertexD().getZ(), 2));
+        this.sideAB = MathHelper.getDistance(tetrahedron.getVertexA(), tetrahedron.getVertexB());
+        this.sideBC = MathHelper.getDistance(tetrahedron.getVertexB(), tetrahedron.getVertexC());
+        this.sideCA = MathHelper.getDistance(tetrahedron.getVertexC(), tetrahedron.getVertexA());
+        this.sideAD = MathHelper.getDistance(tetrahedron.getVertexA(), tetrahedron.getVertexD());
+        this.sideBD = MathHelper.getDistance(tetrahedron.getVertexB(), tetrahedron.getVertexD());
+        this.sideCD = MathHelper.getDistance(tetrahedron.getVertexC(), tetrahedron.getVertexD());
     }
 
     public double calculateSurfaceArea() {

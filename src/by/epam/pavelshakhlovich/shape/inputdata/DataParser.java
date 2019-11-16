@@ -2,21 +2,24 @@ package by.epam.pavelshakhlovich.shape.inputdata;
 
 import by.epam.pavelshakhlovich.shape.entity.InvalidLineException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
+import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DataParser {
 
-    public ValidData parseData(List<String> lines) {
-        ValidData data = new ValidData();
+    public DataObject parseData(List<String> lines) {
+        DataObject data = new DataObject();
         for (String line : lines) {
-            //todo group parsing
-            if (isValid(line)) {
-                Point[] points = parsePoints(line);
-                String name = parseName(line);
+            Optional<ShapeType> type = parseShapeType(line);
+            if (type.isPresent()) {
+                Point[] points = parsePoints(line, type.get());
                 data.addPoints(points);
-                data.addName(name);
+                data.addShape(type.get());
             } else {
                 throw new InvalidLineException("Incorrect data in line " + lines.indexOf(line));
             }
@@ -25,37 +28,31 @@ public class DataParser {
     }
 
     @VisibleForTesting
-    boolean isValid(String line) {
-        return line.matches("([a-zA-Z]+\\s+)(-?\\d[,.]*\\d*[;\\s]*){12}");
-    }
-
-    private String parseName(String line) {
-        //todo this
-        return null;
+    Optional<ShapeType> parseShapeType(String line) {
+        for (ShapeType shapeType : ShapeType.values()) {
+            if (line.matches(shapeType.getRegex())) {
+                return Optional.of(shapeType);
+            }
+        }
+        return Optional.empty();
     }
 
     @VisibleForTesting
-    Point[] parsePoints (String line) {
-        //todo this
-        String [] source = line.trim().split("[;\\s]+");
-        Point[] points = new Point[4];
-
-        points[0] = new Point(
-                Double.parseDouble(source[0]),
-                Double.parseDouble(source[1]),
-                Double.parseDouble(source[2]));
-        points[1] = new Point(
-                Double.parseDouble(source[3]),
-                Double.parseDouble(source[4]),
-                Double.parseDouble(source[5]));
-        points[2] = new Point(
-                Double.parseDouble(source[6]),
-                Double.parseDouble(source[7]),
-                Double.parseDouble(source[8]));
-        points[3] = new Point(
-                Double.parseDouble(source[9]),
-                Double.parseDouble(source[10]),
-                Double.parseDouble(source[11]));
+    Point[] parsePoints(String line, ShapeType shapeType) {
+        Pattern pattern = Pattern.compile(shapeType.getRegex());
+        Matcher matcher = pattern.matcher(line);
+        String src = "";
+        if (matcher.matches()) {
+            src = matcher.group(2);
+        }
+        String [] source = src.trim().split("[;\\s]+");
+        Point[] points = new Point[shapeType.getPointsQuantity()];
+        for (int i = 0; i < points.length; i++) {
+            points[i] = new Point(
+                    Double.parseDouble(source[i * 3]),
+                    Double.parseDouble(source[i * 3 + 1]),
+                    Double.parseDouble(source[i * 3 + 2]));
+        }
         return points;
     }
 
