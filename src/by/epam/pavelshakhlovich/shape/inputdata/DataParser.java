@@ -1,6 +1,6 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.InvalidLineException;
+import by.epam.pavelshakhlovich.shape.entity.IncorrectShapeType;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import com.google.common.annotations.VisibleForTesting;
@@ -18,10 +18,10 @@ public class DataParser {
             Optional<ShapeType> type = parseShapeType(line);
             if (type.isPresent()) {
                 Point[] points = parsePoints(line, type.get());
-                data.addPoints(points);
                 data.addShape(type.get());
+                data.addPoints(points);
             } else {
-                throw new InvalidLineException("Incorrect data in line " + lines.indexOf(line));
+                System.out.println("Incorrect data in line " + (lines.indexOf(line) + 1));
             }
         }
         return data;

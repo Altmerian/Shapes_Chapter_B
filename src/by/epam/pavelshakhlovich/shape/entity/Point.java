@@ -12,6 +12,11 @@ public class Point {
     }
 
     @Override
+    public String toString() {
+        return String.format("(%.1f, %.1f, %.1f)", x, y, z);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;

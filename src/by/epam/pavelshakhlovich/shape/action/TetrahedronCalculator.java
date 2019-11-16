@@ -2,10 +2,10 @@ package by.epam.pavelshakhlovich.shape.action;
 
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import by.epam.pavelshakhlovich.shape.util.MathHelper;
-
-import static java.lang.Math.*;
+import com.google.common.annotations.VisibleForTesting;
 
 public class TetrahedronCalculator {
+    private Tetrahedron tetrahedron;
     private double sideAB;
     private double sideBC;
     private double sideCA;
@@ -14,22 +14,55 @@ public class TetrahedronCalculator {
     private double sideCD;
 
     public TetrahedronCalculator(Tetrahedron tetrahedron) {
-        this.sideAB = MathHelper.getDistance(tetrahedron.getVertexA(), tetrahedron.getVertexB());
-        this.sideBC = MathHelper.getDistance(tetrahedron.getVertexB(), tetrahedron.getVertexC());
-        this.sideCA = MathHelper.getDistance(tetrahedron.getVertexC(), tetrahedron.getVertexA());
-        this.sideAD = MathHelper.getDistance(tetrahedron.getVertexA(), tetrahedron.getVertexD());
-        this.sideBD = MathHelper.getDistance(tetrahedron.getVertexB(), tetrahedron.getVertexD());
-        this.sideCD = MathHelper.getDistance(tetrahedron.getVertexC(), tetrahedron.getVertexD());
+        this.tetrahedron = tetrahedron;
+        this.sideAB = MathHelper.getDistance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1]);
+        this.sideBC = MathHelper.getDistance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
+        this.sideCA = MathHelper.getDistance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[0]);
+        this.sideAD = MathHelper.getDistance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[3]);
+        this.sideBD = MathHelper.getDistance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[3]);
+        this.sideCD = MathHelper.getDistance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
     }
 
     public double calculateSurfaceArea() {
         double ABCTriangleArea = calculateTriangleArea(sideAB, sideBC, sideCA);
-
-        return ABCTriangleArea;
+        double ABDTriangleArea = calculateTriangleArea(sideAB, sideAD, sideBD);
+        double ACDTriangleArea = calculateTriangleArea(sideCA, sideAD, sideCD);
+        double BCDTriangleArea = calculateTriangleArea(sideBC, sideBD, sideCD);
+        return ABCTriangleArea + ABDTriangleArea + ACDTriangleArea + BCDTriangleArea;
     }
 
-    private double calculateTriangleArea(double sideAB, double sideBC, double sideCA) {
+    @VisibleForTesting
+    double calculateTriangleArea(double sideAB, double sideBC, double sideCA) {
         double p = (sideAB + sideBC + sideCA) / 2.0;
         return Math.sqrt(p * (p - sideAB) * (p - sideBC) * (p - sideCA));
+    }
+
+    @VisibleForTesting
+    double calculateVolume() {
+        return (1.0 / 6.0) * MathHelper.getDeterminant(tetrahedron.getVertexes());
+    }
+
+    public double getSideAB() {
+        return sideAB;
+    }
+
+    public double getSideBC() {
+        return sideBC;
+    }
+
+    public double getSideCA() {
+        return sideCA;
+    }
+
+    public double getSideAD() {
+        return sideAD;
+    }
+
+    public double getSideBD() {
+        return sideBD;
+    }
+
+    public double getSideCD() {
+        return sideCD;
     }
 }

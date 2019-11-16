@@ -1,6 +1,5 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.InvalidLineException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import org.testng.Assert;
@@ -8,7 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DataParserTest {
@@ -49,20 +47,15 @@ public class DataParserTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test (expectedExceptions = InvalidLineException.class)
-    public void testInvalidLineException() {
-        List<String> lines = new ArrayList<>();
-        lines.add(INVALID_STRING);
-        DataObject actual = parser.parseData(lines);
-    }
-
-    @Test //How to assertEquals with 2 lists?
+    @Test
     public void testParseData() {
         List<String> lines = new ArrayList<>();
         lines.add(VALID_STRING);
         List<ShapeType> expectedShapes = new ArrayList<>();
         expectedShapes.add(ShapeType.TETRAHEDRON);
-        DataObject expected = new DataObject(expectedShapes, Arrays.asList(pointsExpected));
+        List<Point[]> expectedPointsGroup = new ArrayList<>();
+        expectedPointsGroup.add(pointsExpected);
+        DataObject expected = new DataObject(expectedShapes, expectedPointsGroup);
         DataObject actual = parser.parseData(lines);
         Assert.assertEquals(actual, expected);
     }

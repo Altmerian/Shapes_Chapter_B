@@ -10,7 +10,7 @@ import java.util.List;
 public class DataObject {
 
     private List<ShapeType> shapeTypes = new ArrayList<>();
-    private List<Point> points = new ArrayList<>();
+    private List<Point[]> pointsGroups = new ArrayList<>();
 
     public DataObject() {
     }
@@ -19,17 +19,17 @@ public class DataObject {
         return shapeTypes;
     }
 
-    public List<Point> getPoints() {
-        return points;
+    public List<Point[]> getPointsGroups() {
+        return pointsGroups;
     }
 
-    public DataObject(List<ShapeType> shapeTypes, List<Point> points) {
+    public DataObject(List<ShapeType> shapeTypes, List<Point[]> pointsGroups) {
         this.shapeTypes = shapeTypes;
-        this.points = points;
+        this.pointsGroups = pointsGroups;
     }
 
     public void addPoints(Point[] points) {
-        this.points.addAll(Arrays.asList(points));
+        this.pointsGroups.add(points);
     }
 
     public void addShape(ShapeType type) {
@@ -44,13 +44,13 @@ public class DataObject {
         DataObject dataObject = (DataObject) obj;
 
         if (!shapeTypes.equals(dataObject.shapeTypes)) return false;
-        return points.equals(dataObject.points);
+        return Arrays.deepEquals(pointsGroups.toArray(), (dataObject.pointsGroups.toArray()));
     }
 
     @Override
     public int hashCode() {
         int result = shapeTypes.hashCode();
-        result = 31 * result + points.hashCode();
+        result = 31 * result + pointsGroups.hashCode();
         return result;
     }
 }

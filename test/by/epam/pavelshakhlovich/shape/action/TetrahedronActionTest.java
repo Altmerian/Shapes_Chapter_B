@@ -2,7 +2,6 @@ package by.epam.pavelshakhlovich.shape.action;
 
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
@@ -18,18 +17,13 @@ public class TetrahedronActionTest {
         tetrahedron = new Tetrahedron(point1, point2, point3, point4);
     }
 
-    @BeforeMethod
-    public static void setUp() {
 
-    }
-
-    @Test
-    public void testDoAction() {
-
-    }
 
     @Test
     public void testIsDegenerate() {
-
+        TetrahedronAction action = new TetrahedronAction(tetrahedron);
+        assertTrue(action.isDegenerate());
     }
+
+
 }

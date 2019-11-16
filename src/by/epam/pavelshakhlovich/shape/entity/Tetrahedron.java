@@ -2,18 +2,24 @@ package by.epam.pavelshakhlovich.shape.entity;
 
 import by.epam.pavelshakhlovich.shape.action.TetrahedronAction;
 
+import java.util.Arrays;
+
 public class Tetrahedron extends Shape {
-    private Point vertexA;
-    private Point vertexB;
-    private Point vertexC;
-    private Point vertexD;
+    private Point[] vertexes = new Point[4];
 
 
     public Tetrahedron(Point pointA, Point pointB, Point pointC, Point pointD) {
-        this.vertexA = pointA;
-        this.vertexB = pointB;
-        this.vertexC = pointC;
-        this.vertexD = pointD;
+        this.vertexes[0] = pointA;
+        this.vertexes[1] = pointB;
+        this.vertexes[2] = pointC;
+        this.vertexes[3] = pointD;
+    }
+
+    @Override
+    public String toString() {
+        return "Tetrahedron {" +
+                "vertexes = " + Arrays.toString(vertexes) +
+                '}';
     }
 
     @Override
@@ -21,19 +27,7 @@ public class Tetrahedron extends Shape {
         new TetrahedronAction(this).doAction();
     }
 
-    public Point getVertexA() {
-        return vertexA;
-    }
-
-    public Point getVertexB() {
-        return vertexB;
-    }
-
-    public Point getVertexC() {
-        return vertexC;
-    }
-
-    public Point getVertexD() {
-        return vertexD;
+    public Point[] getVertexes() {
+        return vertexes;
     }
 }
