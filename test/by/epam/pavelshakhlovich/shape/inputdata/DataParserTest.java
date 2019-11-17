@@ -1,5 +1,6 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
+import by.epam.pavelshakhlovich.shape.entity.EmptyDataException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import org.testng.Assert;
@@ -46,6 +47,14 @@ public class DataParserTest {
         Point[] actual = parser.parsePoints(VALID_STRING, ShapeType.TETRAHEDRON);
         Assert.assertEquals(actual, expected);
     }
+
+    @Test (expectedExceptions = EmptyDataException.class)
+    public void testEmptyDataException (){
+        List<String> lines = new ArrayList<>();
+        lines.add(INVALID_STRING);
+        parser.parseData(lines);
+    }
+
 
     @Test
     public void testParseData() {

@@ -15,12 +15,12 @@ public class TetrahedronCalculator {
 
     public TetrahedronCalculator(Tetrahedron tetrahedron) {
         this.tetrahedron = tetrahedron;
-        this.sideAB = MathHelper.getDistance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1]);
-        this.sideBC = MathHelper.getDistance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
-        this.sideCA = MathHelper.getDistance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[0]);
-        this.sideAD = MathHelper.getDistance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[3]);
-        this.sideBD = MathHelper.getDistance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[3]);
-        this.sideCD = MathHelper.getDistance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
+        this.sideAB = MathHelper.distance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1]);
+        this.sideBC = MathHelper.distance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
+        this.sideCA = MathHelper.distance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[0]);
+        this.sideAD = MathHelper.distance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[3]);
+        this.sideBD = MathHelper.distance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[3]);
+        this.sideCD = MathHelper.distance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
     }
 
     public double calculateSurfaceArea() {
@@ -39,7 +39,12 @@ public class TetrahedronCalculator {
 
     @VisibleForTesting
     double calculateVolume() {
-        return (1.0 / 6.0) * MathHelper.getDeterminant(tetrahedron.getVertexes());
+        return (1.0 / 6.0) * MathHelper.determinant(tetrahedron.getVertexes());
+    }
+
+    //todo this
+    public static double[] calculateIntersection() {
+        return new double[0];
     }
 
     public double getSideAB() {

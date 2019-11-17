@@ -1,9 +1,11 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.IncorrectShapeType;
+import by.epam.pavelshakhlovich.shape.entity.EmptyDataException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import com.google.common.annotations.VisibleForTesting;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DataParser {
+    public static Logger logger = LogManager.getLogger(DataParser.class.getName());
 
     public DataObject parseData(List<String> lines) {
         DataObject data = new DataObject();
@@ -21,10 +24,14 @@ public class DataParser {
                 data.addShape(type.get());
                 data.addPoints(points);
             } else {
-                System.out.println("Incorrect data in line " + (lines.indexOf(line) + 1));
+                logger.error("Incorrect data in line " + (lines.indexOf(line) + 1));
             }
         }
-        return data;
+        if (data.getShapeTypes().isEmpty() && data.getPointsGroups().isEmpty()) {
+            throw new EmptyDataException("There are no valid data lines in the source file!");
+        } else {
+            return data;
+        }
     }
 
     @VisibleForTesting
@@ -45,7 +52,7 @@ public class DataParser {
         if (matcher.matches()) {
             src = matcher.group(2);
         }
-        String [] source = src.trim().split("[;\\s]+");
+        String[] source = src.trim().split("[;\\s]+");
         Point[] points = new Point[shapeType.getPointsQuantity()];
         for (int i = 0; i < points.length; i++) {
             points[i] = new Point(

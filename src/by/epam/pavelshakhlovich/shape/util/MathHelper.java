@@ -6,13 +6,13 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class MathHelper {
-    public static double getDistance(Point pointA, Point pointB) {
+    public static double distance(Point pointA, Point pointB) {
         return sqrt(pow(pointA.getX() - pointB.getX(), 2) +
                 pow(pointA.getY() - pointB.getY(), 2) +
                 pow(pointA.getZ() - pointB.getZ(), 2));
     }
 
-    public static double getDeterminant(Point[] points) {
+    public static double determinant(Point[] points) {
         double x1 = points[1].getX() - points[0].getX();
         double x2 = points[2].getX() - points[0].getX();
         double x3 = points[3].getX() - points[0].getX();

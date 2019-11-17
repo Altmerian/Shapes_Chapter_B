@@ -10,13 +10,12 @@ public class TetrahedronActionTest {
     private static Tetrahedron tetrahedron;
 
     static {
-        Point point1 = new Point(1.0, -3.0, 2.0);
+        Point point1 = new Point(-1.0, -3.0, -3.0);
         Point point2 = new Point(5.0, -3.0, 0.0);
         Point point3 = new Point(-1.0, -3.0, -3.0);
-        Point point4 = new Point(1.0, -3.0, 2.0);
+        Point point4 = new Point(2.0, 4.0, 1.0);
         tetrahedron = new Tetrahedron(point1, point2, point3, point4);
     }
-
 
 
     @Test

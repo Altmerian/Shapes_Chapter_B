@@ -13,7 +13,7 @@ public class ShapesCreator {
             case UNKNOWN:
                 return new UnknownShape(points[0], points[1]);
             default:
-                throw new IncorrectShapeType("Incorrect shape description: " + type.name());
+                throw new EnumConstantNotPresentException(ShapeType.class, type.name());
         }
     }
 }

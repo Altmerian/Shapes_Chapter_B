@@ -8,5 +8,6 @@ public class ApplicationTest {
 
     @Test
     public void testImplementLogic() {
+        //nothing to test yet
     }
 }
