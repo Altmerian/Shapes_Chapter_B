@@ -4,16 +4,18 @@ import by.epam.pavelshakhlovich.shape.entity.EmptyDataException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import com.google.common.annotations.VisibleForTesting;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DataParser {
-    public static Logger logger = LogManager.getLogger(DataParser.class.getName());
+    private static Logger logger = LogManager.getLogger();
 
     public DataObject parseData(List<String> lines) {
         DataObject data = new DataObject();
@@ -23,12 +25,15 @@ public class DataParser {
                 Point[] points = parsePoints(line, type.get());
                 data.addShape(type.get());
                 data.addPoints(points);
+                logger.printf(Level.INFO, "parsing result from line %d -\n %s %s",
+                        (lines.indexOf(line) + 1), type.get(), Arrays.toString(points));
             } else {
-                logger.error("Incorrect data in line " + (lines.indexOf(line) + 1));
+                logger.warn("incorrect data in line " + (lines.indexOf(line) + 1));
             }
         }
         if (data.getShapeTypes().isEmpty() && data.getPointsGroups().isEmpty()) {
-            throw new EmptyDataException("There are no valid data lines in the source file!");
+            throw logger.throwing(Level.ERROR,
+                    new EmptyDataException ("There are no valid data lines in the source file!"));
         } else {
             return data;
         }

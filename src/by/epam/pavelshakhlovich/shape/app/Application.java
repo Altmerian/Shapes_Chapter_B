@@ -19,7 +19,7 @@ public class Application {
         for (int i = 0; i < dataObject.getShapeTypes().size(); i++) {
             Shape shape = creator.createShape(
                     dataObject.getShapeTypes().get(i), dataObject.getPointsGroups().get(i));
-            System.out.println("SHAPE - " + shape);
+            System.out.println("\nSHAPE - " + shape);
             shape.becomeChosen();
         }
     }

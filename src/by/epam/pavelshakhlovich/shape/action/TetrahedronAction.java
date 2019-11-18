@@ -5,9 +5,11 @@ import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.util.HashSet;
+import java.util.Optional;
 
 public class TetrahedronAction {
     private Tetrahedron tetrahedron;
+    private TetrahedronCalculator calculator;
     private String coordinatePlaneName;
 
     public TetrahedronAction(Tetrahedron tetrahedron) {
@@ -20,21 +22,19 @@ public class TetrahedronAction {
             System.out.print("One or more vertexes have the same coordinates or all vertexes lie at the same plane.");
             System.out.println(" Tetrahedron is degenerate and doesn`t have any surface area or volume!");
         } else {
-            TetrahedronCalculator calculator = new TetrahedronCalculator(tetrahedron);
-            double area = calculator.calculateSurfaceArea();
-            System.out.print("Surface area: " + area);
-            double volume = calculator.calculateVolume();
-            System.out.println(", volume: " + volume);
+            calculator = new TetrahedronCalculator(tetrahedron);
+            System.out.printf("Surface area: %f m2", calculator.calculateSurfaceArea());
+            System.out.printf(", volume: %f m3\n", calculator.calculateVolume());
         }
 
-        if (isIntersected()) {
-            double [] volumes = TetrahedronCalculator.calculateIntersection();
-            System.out.printf("Coordinate plane %s divides the Tetrahedron onto two shapes with volumes %f / %f",
+        if (findIntersectionPoints().isPresent()) {
+            double[] volumes = calculator.calculateIntersection(findIntersectionPoints().get());
+            System.out.printf("Coordinate plane %s divides the Tetrahedron onto two shapes with volumes %f m3/ %f m3\n",
                     coordinatePlaneName, volumes[0], volumes[1]);
         } else if (lieOnCoordinatePlane()) {
-            System.out.println("Basic of the Tetrahedron lies on the coordinate plane " + coordinatePlaneName);
+            System.out.println("Basis of the Tetrahedron lies on the coordinate plane " + coordinatePlaneName);
         } else {
-            System.out.println("The Tetrahedron does not intersects with any coordinate plane.");
+            System.out.println("The Tetrahedron does not intersect with any coordinate plane.");
         }
     }
 
@@ -71,8 +71,8 @@ public class TetrahedronAction {
         }
 
         HashSet<Point> equalTestSet = new HashSet<>();
-            equalTestSet.add(tetrahedron.getVertexes()[0]);
-            boolean pointsEqualCause = false;
+        equalTestSet.add(tetrahedron.getVertexes()[0]);
+        boolean pointsEqualCause = false;
         for (int i = 1; i < 4; i++) {
             if (!equalTestSet.add(tetrahedron.getVertexes()[i])) {
                 pointsEqualCause = true;
@@ -84,12 +84,58 @@ public class TetrahedronAction {
     }
 
     //todo this
-    private boolean isIntersected() {
-        return false;
+    private Optional<Point[]> findIntersectionPoints() {
+        Point[] vertexes = tetrahedron.getVertexes();
+        int xCause = 0;
+        for (int i = 0; i < 4; i++) {
+            if (vertexes[i].getX() == 0) {
+                xCause++;
+            }
+        }
+        if (xCause == 3) {
+            coordinatePlaneName = "Z";
+            return Optional.of(vertexes);
+        }
+
+        return Optional.empty();
     }
 
-    //todo this
+
     private boolean lieOnCoordinatePlane() {
+        Point[] vertexes = tetrahedron.getVertexes();
+        int xCause = 0;
+        for (int i = 0; i < 4; i++) {
+            if (vertexes[i].getX() == 0) {
+                xCause++;
+            }
+        }
+        if (xCause == 3) {
+            coordinatePlaneName = "Z";
+            return true;
+        }
+
+        int yCause = 0;
+        for (int i = 0; i < 4; i++) {
+            if (vertexes[i].getY() == 0) {
+                yCause++;
+            }
+        }
+        if (yCause == 3) {
+            coordinatePlaneName = "X";
+            return true;
+        }
+
+        int zCause = 0;
+        for (int i = 0; i < 4; i++) {
+            if (vertexes[i].getZ() == 0) {
+                zCause++;
+            }
+        }
+        if (zCause == 3) {
+            coordinatePlaneName = "Y";
+            return true;
+        }
+
         return false;
     }
 

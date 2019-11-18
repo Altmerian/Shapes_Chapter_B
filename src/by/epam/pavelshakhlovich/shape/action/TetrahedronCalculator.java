@@ -1,5 +1,6 @@
 package by.epam.pavelshakhlovich.shape.action;
 
+import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import by.epam.pavelshakhlovich.shape.util.MathHelper;
 import com.google.common.annotations.VisibleForTesting;
@@ -13,7 +14,7 @@ public class TetrahedronCalculator {
     private double sideBD;
     private double sideCD;
 
-    public TetrahedronCalculator(Tetrahedron tetrahedron) {
+    TetrahedronCalculator(Tetrahedron tetrahedron) {
         this.tetrahedron = tetrahedron;
         this.sideAB = MathHelper.distance(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1]);
         this.sideBC = MathHelper.distance(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
@@ -23,7 +24,7 @@ public class TetrahedronCalculator {
         this.sideCD = MathHelper.distance(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
     }
 
-    public double calculateSurfaceArea() {
+    double calculateSurfaceArea() {
         double ABCTriangleArea = calculateTriangleArea(sideAB, sideBC, sideCA);
         double ABDTriangleArea = calculateTriangleArea(sideAB, sideAD, sideBD);
         double ACDTriangleArea = calculateTriangleArea(sideCA, sideAD, sideCD);
@@ -43,7 +44,7 @@ public class TetrahedronCalculator {
     }
 
     //todo this
-    public static double[] calculateIntersection() {
+    double[] calculateIntersection(Point[] points) {
         return new double[0];
     }
 
