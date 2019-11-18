@@ -8,6 +8,10 @@ public class Tetrahedron extends Shape {
     private Point[] vertexes = new Point[4];
 
 
+    public Tetrahedron(Point[] vertexes) {
+        this.vertexes = vertexes;
+    }
+
     public Tetrahedron(Point pointA, Point pointB, Point pointC, Point pointD) {
         this.vertexes[0] = pointA;
         this.vertexes[1] = pointB;

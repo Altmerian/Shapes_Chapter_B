@@ -24,4 +24,21 @@ public class MathHelper {
         double z3 = points[3].getZ() - points[0].getZ();
         return x1 * y2 * z3 + y1 * z2 * x3 + x2 * y3 * z1 - x3 * y2 * z1 - y1 * x2 * z3 - y3 * z2 * x1;
     }
+
+    public static int findUniqueNumberIndex(double[] numbers) {
+        int index = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            int counter = 0;
+            for (int j = 0; j < numbers.length; j++) {
+                if (numbers[i] == numbers[j]) {
+                    counter++;
+                }
+            }
+            if (counter == 1) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
 }

@@ -5,6 +5,9 @@ import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import by.epam.pavelshakhlovich.shape.util.MathHelper;
 import com.google.common.annotations.VisibleForTesting;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TetrahedronCalculator {
     private Tetrahedron tetrahedron;
     private double sideAB;
@@ -38,15 +41,20 @@ public class TetrahedronCalculator {
         return Math.sqrt(p * (p - sideAB) * (p - sideBC) * (p - sideCA));
     }
 
+    double calculateTriangleArea(List <Point> points) {
+        Point[] vertexes = points.toArray(new Point[3]);
+        double side1 = MathHelper.distance(vertexes[0], vertexes[1]);
+        double side2 = MathHelper.distance(vertexes[1], vertexes[2]);
+        double side3 = MathHelper.distance(vertexes[2], vertexes[0]);
+        double p = (side1 + side2 + side3) / 2.0;
+        return Math.sqrt(p * (p - side1) * (p - side2) * (p - side3));
+    }
+
     @VisibleForTesting
     double calculateVolume() {
         return (1.0 / 6.0) * MathHelper.determinant(tetrahedron.getVertexes());
     }
 
-    //todo this
-    double[] calculateIntersection(Point[] points) {
-        return new double[0];
-    }
 
     public double getSideAB() {
         return sideAB;

@@ -6,9 +6,8 @@ public class UnknownShape extends Shape {
     private Point[] vertexes = new Point[2];
 
 
-    public UnknownShape(Point pointA, Point pointB) {
-        this.vertexes[0] = pointA;
-        this.vertexes[1] = pointB;
+    public UnknownShape(Point[] points) {
+        this.vertexes = points;
     }
 
     @Override
