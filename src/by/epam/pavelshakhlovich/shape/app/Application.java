@@ -5,13 +5,18 @@ import by.epam.pavelshakhlovich.shape.factory.ShapesCreator;
 import by.epam.pavelshakhlovich.shape.inputdata.DataObject;
 import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
 import by.epam.pavelshakhlovich.shape.inputdata.DataReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
+    private static Logger logger = LogManager.getLogger();
+
+    public static void implementLogic (){
+        logger.traceEntry();
         Path path = Paths.get("data/data.txt");
         List<String> stringData = new DataReader().readLinesFromFile(path);
         DataObject dataObject = new DataParser().parseData(stringData);
@@ -22,6 +27,7 @@ public class Application {
             System.out.println("\nSHAPE - " + shape);
             shape.becomeChosen();
         }
+        logger.traceExit();
     }
 
 

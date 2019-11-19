@@ -22,7 +22,7 @@ public class MathHelper {
         double z1 = points[1].getZ() - points[0].getZ();
         double z2 = points[2].getZ() - points[0].getZ();
         double z3 = points[3].getZ() - points[0].getZ();
-        return x1 * y2 * z3 + y1 * z2 * x3 + x2 * y3 * z1 - x3 * y2 * z1 - y1 * x2 * z3 - y3 * z2 * x1;
+        return Math.abs(x1 * y2 * z3 + y1 * z2 * x3 + x2 * y3 * z1 - x3 * y2 * z1 - y1 * x2 * z3 - y3 * z2 * x1);
     }
 
     public static int findUniqueNumberIndex(double[] numbers) {
@@ -39,6 +39,21 @@ public class MathHelper {
             }
         }
         return index;
+    }
+
+    public static boolean hasThreeEqualNumbers(double[] numbers) {
+        for (double number : numbers) {
+            int counter = 0;
+            for (double aNumber : numbers) {
+                if (number == aNumber) {
+                    counter++;
+                }
+            }
+            if (counter == 3) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

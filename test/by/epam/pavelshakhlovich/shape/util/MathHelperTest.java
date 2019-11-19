@@ -5,11 +5,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class MathHelperTest {
+    private double[] numbers =  {-3.0, -3.0, -3.0, 4.0};
 
     @Test
     public void testFindUniqueNumberIndex() {
-        double [] numbers = new double[] {-3.0, -3.0, -3.0, 4.0};
         int expected = 3;
         assertEquals(MathHelper.findUniqueNumberIndex(numbers), expected);
+    }
+
+    @Test
+    public void testHasThreeEqualNumbers() {
+        assertTrue(MathHelper.hasThreeEqualNumbers(numbers));
+
     }
 }

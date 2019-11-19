@@ -9,18 +9,19 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DataParserTest {
-    private final static String VALID_STRING = "Tetrahedron 1.0 -3.0 2.0; 5.0 -3.0 0.0; -1 -3.0 -3; 2.0 4.0 1.0";
+    private final static String VALID_STRING = "Tetrahedron 2.0 0.0 1.0; 5.0 6.0 1.0; 10.0 9.0 7.0; 3.0 5.0 1.0";
     private final static String INVALID_STRING = "Tetrahedron 1.0a 3.0 4.5; 2.0  1.5  42; -1  -3 -54; 2.5 4.0 45";
     private static DataParser parser;
     private static Point[] pointsExpected;
 
     static {
-        Point point1 = new Point(1.0, -3.0, 2.0);
-        Point point2 = new Point(5.0, -3.0, 0.0);
-        Point point3 = new Point(-1.0, -3.0, -3.0);
-        Point point4 = new Point(2.0, 4.0, 1.0);
+        Point point1 = new Point(2.0, 0.0, 1.0);
+        Point point2 = new Point(5.0, 6.0, 1.0);
+        Point point3 = new Point(10.0, 9.0, 7.0);
+        Point point4 = new Point(3.0, 5.0, 1.0);
         pointsExpected = new Point[] {point1, point2, point3, point4};
     }
 
@@ -30,14 +31,18 @@ public class DataParserTest {
     }
 
     @Test
-    public void testIsValidLine() {
-        ShapeType actualShapeType = parser.parseShapeType(VALID_STRING).get();
+    public void testParseShapeType() {
         ShapeType expectedShapeType = ShapeType.TETRAHEDRON;
+        Optional<ShapeType> type = parser.parseShapeType(VALID_STRING);
+        ShapeType actualShapeType = null;
+        if (type.isPresent()) {
+            actualShapeType = type.get();
+        }
         Assert.assertEquals(actualShapeType, expectedShapeType, "Regex checking");
     }
 
     @Test
-    public void testIsInValidLine() {
+    public void IsInValidLineTest() {
         Assert.assertFalse(parser.parseShapeType(INVALID_STRING).isPresent());
     }
 

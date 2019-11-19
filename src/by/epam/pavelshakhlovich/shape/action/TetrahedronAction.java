@@ -11,9 +11,7 @@ import java.util.stream.Collectors;
 public class TetrahedronAction {
     private Tetrahedron tetrahedron;
     private TetrahedronCalculator calculator;
-    private String coordinatePlaneName;
     private double volume;
-
 
     public TetrahedronAction(Tetrahedron tetrahedron) {
         this.tetrahedron = tetrahedron;
@@ -35,12 +33,14 @@ public class TetrahedronAction {
         if (findIntersectionFactors().isPresent()) {
             Map<String, Double> factors = findIntersectionFactors().get();
             findVolumeParts(factors);
-        } else if (lieOnCoordinatePlane()) {
-            System.out.println("Basis of the Tetrahedron lies on the coordinate plane " + coordinatePlaneName);
+        } else if (!lieOnCoordinatePlane().isEmpty()) {
+            System.out.println("Basis of the Tetrahedron lies on the coordinate planes: " +
+                    lieOnCoordinatePlane().toString());
         } else {
-            System.out.println("The Tetrahedron does not intersect with or lie at any coordinate plane.");
+            System.out.println("The Tetrahedron does not intersect with any coordinate plane.");
         }
     }
+
 
     private void findVolumeParts(Map<String, Double> factors) {
         for (Map.Entry<String, Double> factor : factors.entrySet()) {
@@ -53,7 +53,6 @@ public class TetrahedronAction {
 
     @VisibleForTesting
     boolean isDegenerate() {
-
         Point[] vertexes = tetrahedron.getVertexes();
         double x = vertexes[0].getX();
         boolean xCause = true;
@@ -63,7 +62,6 @@ public class TetrahedronAction {
                 break;
             }
         }
-
         double y = vertexes[0].getY();
         boolean yCause = true;
         for (int i = 1; i < 4; i++) {
@@ -72,7 +70,6 @@ public class TetrahedronAction {
                 break;
             }
         }
-
         double z = vertexes[0].getZ();
         boolean zCause = true;
         for (int i = 1; i < 4; i++) {
@@ -81,7 +78,6 @@ public class TetrahedronAction {
                 break;
             }
         }
-
         HashSet<Point> equalTestSet = new HashSet<>();
         equalTestSet.add(tetrahedron.getVertexes()[0]);
         boolean pointsEqualCause = false;
@@ -91,15 +87,13 @@ public class TetrahedronAction {
                 break;
             }
         }
-
         return xCause || yCause || zCause || pointsEqualCause;
     }
 
-
-    private Optional<Map<String, Double>> findIntersectionFactors() {
+    @VisibleForTesting
+    Optional<Map<String, Double>> findIntersectionFactors() {
         Point[] vertexes = tetrahedron.getVertexes();
         Map<String, Double> intersectionFactors = new HashMap<>();
-
 
         int xCause = 0;
         for (int i = 0; i < 4; i++) {
@@ -107,18 +101,20 @@ public class TetrahedronAction {
                 xCause++;
             }
         }
-        if (xCause == 3 || xCause == 1) {
-            coordinatePlaneName = "YZ";
-            int mainVertexIndex = MathHelper.findUniqueNumberIndex(new double[]
-                    {vertexes[0].getX(), vertexes[1].getX(), vertexes[2].getX(), vertexes[3].getX()});
+        boolean basisIsParallelToThePlane = false;
+        double[] coordinatesX = {vertexes[0].getX(), vertexes[1].getX(), vertexes[2].getX(), vertexes[3].getX()};
+        if (MathHelper.hasThreeEqualNumbers(coordinatesX)) {
+            basisIsParallelToThePlane = true;
+        }
+        if (basisIsParallelToThePlane && (xCause == 3 || xCause == 1)) {
+            int mainVertexIndex = MathHelper.findUniqueNumberIndex(coordinatesX);
             List<Point> basisPoints = Arrays.stream(vertexes)
                     .filter(x -> x != vertexes[mainVertexIndex])
                     .collect(Collectors.toList());
-            double height = volume * 3 / calculator.calculateTriangleArea(basisPoints);
+            double height = vertexes[mainVertexIndex].getX() - basisPoints.get(0).getX();
             double ratio = vertexes[mainVertexIndex].getX() / height;
-            intersectionFactors.put(coordinatePlaneName, ratio);
+            intersectionFactors.put("YZ", ratio);
         }
-
 
         int yCause = 0;
         for (int i = 0; i < 4; i++) {
@@ -126,16 +122,19 @@ public class TetrahedronAction {
                 yCause++;
             }
         }
-        if (yCause == 3 || yCause == 1) {
-            coordinatePlaneName = "XZ";
-            int mainVertexIndex = MathHelper.findUniqueNumberIndex(new double[]
-                    {vertexes[0].getY(), vertexes[1].getY(), vertexes[2].getY(), vertexes[3].getY()});
+        basisIsParallelToThePlane = false;
+        double[] coordinatesY = {vertexes[0].getY(), vertexes[1].getY(), vertexes[2].getY(), vertexes[3].getY()};
+        if (MathHelper.hasThreeEqualNumbers(coordinatesY)) {
+            basisIsParallelToThePlane = true;
+        }
+        if (basisIsParallelToThePlane && (yCause == 3 || yCause == 1)) {
+            int mainVertexIndex = MathHelper.findUniqueNumberIndex(coordinatesY);
             List<Point> basisPoints = Arrays.stream(vertexes)
                     .filter(y -> y != vertexes[mainVertexIndex])
                     .collect(Collectors.toList());
-            double height = volume * 3 / calculator.calculateTriangleArea(basisPoints);
+            double height = vertexes[mainVertexIndex].getY() - basisPoints.get(0).getY();
             double ratio = vertexes[mainVertexIndex].getY() / height;
-            intersectionFactors.put(coordinatePlaneName, ratio);
+            intersectionFactors.put("XZ", ratio);
         }
 
         int zCause = 0;
@@ -144,16 +143,19 @@ public class TetrahedronAction {
                 zCause++;
             }
         }
-        if (zCause == 3 || zCause == 1) {
-            coordinatePlaneName = "XY";
-            int mainVertexIndex = MathHelper.findUniqueNumberIndex(new double[]
-                    {vertexes[0].getZ(), vertexes[1].getZ(), vertexes[2].getZ(), vertexes[3].getZ()});
+        basisIsParallelToThePlane = false;
+        double[] coordinatesZ = {vertexes[0].getZ(), vertexes[1].getZ(), vertexes[2].getZ(), vertexes[3].getZ()};
+        if (MathHelper.hasThreeEqualNumbers(coordinatesZ)) {
+            basisIsParallelToThePlane = true;
+        }
+        if (basisIsParallelToThePlane && (zCause == 3 || zCause == 1)) {
+            int mainVertexIndex = MathHelper.findUniqueNumberIndex(coordinatesZ);
             List<Point> basisPoints = Arrays.stream(vertexes)
                     .filter(z -> z != vertexes[mainVertexIndex])
                     .collect(Collectors.toList());
-            double height = volume * 3 / calculator.calculateTriangleArea(basisPoints);
+            double height = vertexes[mainVertexIndex].getZ() - basisPoints.get(0).getZ();
             double ratio = vertexes[mainVertexIndex].getZ() / height;
-            intersectionFactors.put(coordinatePlaneName, ratio);
+            intersectionFactors.put("XY", ratio);
         }
 
         if (intersectionFactors.isEmpty()) {
@@ -164,8 +166,9 @@ public class TetrahedronAction {
 
     }
 
-
-    private boolean lieOnCoordinatePlane() {
+    @VisibleForTesting
+    List<String> lieOnCoordinatePlane() {
+        List<String> coordinatePlaneNames = new ArrayList<>();
         Point[] vertexes = tetrahedron.getVertexes();
         int xCause = 0;
         for (int i = 0; i < 4; i++) {
@@ -174,8 +177,7 @@ public class TetrahedronAction {
             }
         }
         if (xCause == 3) {
-            coordinatePlaneName = "YZ";
-            return true;
+            coordinatePlaneNames.add("YZ");
         }
 
         int yCause = 0;
@@ -185,8 +187,7 @@ public class TetrahedronAction {
             }
         }
         if (yCause == 3) {
-            coordinatePlaneName = "XZ";
-            return true;
+            coordinatePlaneNames.add("XZ");
         }
 
         int zCause = 0;
@@ -196,11 +197,9 @@ public class TetrahedronAction {
             }
         }
         if (zCause == 3) {
-            coordinatePlaneName = "XY";
-            return true;
+            coordinatePlaneNames.add("XY");
         }
-
-        return false;
+        return coordinatePlaneNames;
     }
 
 }

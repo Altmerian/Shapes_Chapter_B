@@ -1,8 +1,8 @@
 package by.epam.pavelshakhlovich.shape.factory;
 
 public enum ShapeType {
-    TETRAHEDRON(4, "([Tt][Ee][Tt][Rr][Aa][Hh][Ee][Dd][Rr][Oo][Nn]+\\s+)((-?\\d[,.]*\\d*[;\\s]*){12})"),
-    UNKNOWN (2, "([Uu][Nn][Kk][Nn][Oo][Ww][Nn]+\\s+)((-?\\d[,.]*\\d*[;\\s]*){6})");
+    TETRAHEDRON(4, "([Tt][Ee][Tt][Rr][Aa][Hh][Ee][Dd][Rr][Oo][Nn]\\s+)((-?\\d+[,.]*\\d*[;\\s]*){12})"),
+    UNKNOWN (2, "([Uu][Nn][Kk][Nn][Oo][Ww][Nn]\\s+)((-?\\d+[,.]*\\d*[;\\s]*){6})");
 
     private int pointsQuantity;
     private String regex;

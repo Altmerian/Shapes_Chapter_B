@@ -19,7 +19,7 @@ public class UnknownShape extends Shape {
 
     @Override
     public void becomeChosen() {
-        System.out.printf("Sorry, logic for %s is not ready yet.", this.getClass().getSimpleName());
+        System.out.printf("Sorry, logic for %s is not ready yet.\n", this.getClass().getSimpleName());
     }
 
     public Point[] getVertexes() {

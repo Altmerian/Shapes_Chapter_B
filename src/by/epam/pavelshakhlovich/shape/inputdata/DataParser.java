@@ -7,6 +7,7 @@ import com.google.common.annotations.VisibleForTesting;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
 public class DataParser {
     private static Logger logger = LogManager.getLogger();
 
+    @NotNull
     public DataObject parseData(List<String> lines) {
         DataObject data = new DataObject();
         for (String line : lines) {
@@ -31,7 +33,7 @@ public class DataParser {
                 logger.warn("incorrect data in line " + (lines.indexOf(line) + 1));
             }
         }
-        if (data.getShapeTypes().isEmpty() && data.getPointsGroups().isEmpty()) {
+        if (data.getShapeTypes().isEmpty()) {
             throw logger.throwing(Level.ERROR,
                     new EmptyDataException ("There are no valid data lines in the source file!"));
         } else {
