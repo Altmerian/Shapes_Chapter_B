@@ -1,7 +1,7 @@
 package by.epam.pavelshakhlovich.shape.app;
 
 import by.epam.pavelshakhlovich.shape.entity.Shape;
-import by.epam.pavelshakhlovich.shape.factory.ShapesCreator;
+import by.epam.pavelshakhlovich.shape.factory.ShapeFactory;
 import by.epam.pavelshakhlovich.shape.inputdata.DataObject;
 import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
 import by.epam.pavelshakhlovich.shape.inputdata.DataReader;
@@ -20,9 +20,9 @@ public class Application {
         Path path = Paths.get("data/data.txt");
         List<String> stringData = new DataReader().readLinesFromFile(path);
         DataObject dataObject = new DataParser().parseData(stringData);
-        ShapesCreator creator = new ShapesCreator();
+        ShapeFactory factory = new ShapeFactory();
         for (int i = 0; i < dataObject.getShapeTypes().size(); i++) {
-            Shape shape = creator.createShape(
+            Shape shape = factory.createShape(
                     dataObject.getShapeTypes().get(i), dataObject.getPointsGroups().get(i));
             System.out.println("\nSHAPE - " + shape);
             shape.becomeChosen();

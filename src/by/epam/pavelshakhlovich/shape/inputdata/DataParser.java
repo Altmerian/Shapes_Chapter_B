@@ -1,6 +1,6 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.EmptyDataException;
+import by.epam.pavelshakhlovich.shape.exception.EmptyDataException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import com.google.common.annotations.VisibleForTesting;
@@ -18,7 +18,12 @@ import java.util.regex.Pattern;
 public class DataParser {
     private static Logger logger = LogManager.getLogger();
 
-    @NotNull
+    /**
+     * Parses data from {@code List<String>} using {@code parseShapeType()} and {@code parsePoints()}
+     * @param lines read by {@link DataReader}
+     * @return valid data or throws {@link EmptyDataException}
+     */
+
     public DataObject parseData(List<String> lines) {
         DataObject data = new DataObject();
         for (String line : lines) {

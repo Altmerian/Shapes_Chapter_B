@@ -6,7 +6,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class MathHelper {
-    public static double distance(Point pointA, Point pointB) {
+    public static double length(Point pointA, Point pointB) {
         return sqrt(pow(pointA.getX() - pointB.getX(), 2) +
                 pow(pointA.getY() - pointB.getY(), 2) +
                 pow(pointA.getZ() - pointB.getZ(), 2));

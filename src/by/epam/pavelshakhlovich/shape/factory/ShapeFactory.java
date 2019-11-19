@@ -1,10 +1,18 @@
 package by.epam.pavelshakhlovich.shape.factory;
 
 import by.epam.pavelshakhlovich.shape.entity.*;
+import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
 import org.jetbrains.annotations.NotNull;
 
-public class ShapesCreator {
+public class ShapeFactory {
 
+    /**
+     *  Creates concrete Shape object depends on type
+     *
+     * @param type     valid parsed data by {@link DataParser}
+     * @param points   valid parsed data by {@link DataParser}
+     * @return         @NotNull
+     */
     @NotNull
     public Shape createShape(ShapeType type, Point[] points) {
         switch (type) {

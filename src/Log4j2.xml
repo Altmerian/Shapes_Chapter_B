@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
+
+        <RollingFile name="MyFile" fileName="logs/app.log"
+                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log"
+                     ignoreExceptions="true">
+            <PatternLayout>
+                <Pattern>%d [%t] %-5p %c{6} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="25 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{6} - %msg%n"/>
         </Console>
-<!--        <File name="MyFile" fileName="logs/app.log">-->
-<!--            <PatternLayout>-->
-<!--                <Pattern>%d [%t] %-5p %c{6} [%t] %m%n</Pattern>-->
-<!--            </PatternLayout>-->
-<!--        </File>-->
     </Appenders>
     <Loggers>
         <Root level="trace">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="MyFile"/>
         </Root>
-<!--        <Logger name="by.epam.pavelshakhlovich" >-->
-            <!--            <AppenderRef ref="MyFile"/>-->
-<!--        </Logger>-->
     </Loggers>
 </Configuration>

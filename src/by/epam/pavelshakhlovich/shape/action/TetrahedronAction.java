@@ -32,7 +32,7 @@ public class TetrahedronAction {
 
         if (findIntersectionFactors().isPresent()) {
             Map<String, Double> factors = findIntersectionFactors().get();
-            findVolumeParts(factors);
+            calculateVolumeParts(factors);
         } else if (!lieOnCoordinatePlane().isEmpty()) {
             System.out.println("Basis of the Tetrahedron lies on the coordinate planes: " +
                     lieOnCoordinatePlane().toString());
@@ -42,7 +42,7 @@ public class TetrahedronAction {
     }
 
 
-    private void findVolumeParts(Map<String, Double> factors) {
+    private void calculateVolumeParts(Map<String, Double> factors) {
         for (Map.Entry<String, Double> factor : factors.entrySet()) {
             double upperVolume = volume * Math.pow(factor.getValue(), 3);
             System.out.printf("Coordinate plane %s divides the Tetrahedron onto two shapes with volumes %f m3/ %f m3\n",

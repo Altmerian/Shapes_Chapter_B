@@ -1,6 +1,6 @@
 package by.epam.pavelshakhlovich.shape.inputdata;
 
-import by.epam.pavelshakhlovich.shape.entity.EmptyDataException;
+import by.epam.pavelshakhlovich.shape.exception.EmptyDataException;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.factory.ShapeType;
 import org.testng.Assert;
