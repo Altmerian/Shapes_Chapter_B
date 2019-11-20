@@ -42,9 +42,9 @@ public class TetrahedronActionTest {
         Point point4 = new Point(2.0, 4.0, 1.0);
         Tetrahedron tetrahedron = new Tetrahedron(point1, point2, point3, point4);
         TetrahedronAction action = new TetrahedronAction(tetrahedron);
-        double expectedRatio = 0.57142857142;
         Map<String, Double> actualIntersectionFactor = action.findIntersectionFactors().get();
         double actualRatio = actualIntersectionFactor.get("XZ");
+        double expectedRatio = 0.57142857142;
         assertEquals(actualRatio, expectedRatio, 0.000_001);
     }
 

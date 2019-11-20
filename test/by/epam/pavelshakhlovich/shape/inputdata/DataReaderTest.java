@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DataReaderTest {
@@ -23,4 +24,14 @@ public class DataReaderTest {
         List<String> actual = reader.readLinesFromFile(path);
         Assert.assertEquals(actual, expected);
     }
+
+    @Test
+    public void testReadLinesFromEmptyFile() {
+        Path path = Paths.get("test/data/testData.txt");
+        List<String> expected = Collections.emptyList();
+        DataReader reader = new DataReader();
+        List<String> actual = reader.readLinesFromFile(path);
+        Assert.assertEquals(actual, expected);
+    }
+
 }

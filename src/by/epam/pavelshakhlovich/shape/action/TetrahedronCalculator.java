@@ -1,38 +1,35 @@
 package by.epam.pavelshakhlovich.shape.action;
 
+import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import by.epam.pavelshakhlovich.shape.util.MathHelper;
 import com.google.common.annotations.VisibleForTesting;
 
-public class TetrahedronCalculator {
+class TetrahedronCalculator {
     private Tetrahedron tetrahedron;
-    private double sideAB;
-    private double sideBC;
-    private double sideCA;
-    private double sideAD;
-    private double sideBD;
-    private double sideCD;
+
 
     TetrahedronCalculator(Tetrahedron tetrahedron) {
         this.tetrahedron = tetrahedron;
-        this.sideAB = MathHelper.length(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1]);
-        this.sideBC = MathHelper.length(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
-        this.sideCA = MathHelper.length(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[0]);
-        this.sideAD = MathHelper.length(tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[3]);
-        this.sideBD = MathHelper.length(tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[3]);
-        this.sideCD = MathHelper.length(tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
     }
 
     double calculateSurfaceArea() {
-        double ABCTriangleArea = calculateTriangleArea(sideAB, sideBC, sideCA);
-        double ABDTriangleArea = calculateTriangleArea(sideAB, sideAD, sideBD);
-        double ACDTriangleArea = calculateTriangleArea(sideCA, sideAD, sideCD);
-        double BCDTriangleArea = calculateTriangleArea(sideBC, sideBD, sideCD);
-        return ABCTriangleArea + ABDTriangleArea + ACDTriangleArea + BCDTriangleArea;
+        double TriangleArea1 = calculateTriangleArea(
+                tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
+        double TriangleArea2 = calculateTriangleArea(
+                tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
+        double TriangleArea3 = calculateTriangleArea(
+                tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
+        double TriangleArea4 = calculateTriangleArea(
+                tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[3]);
+        return TriangleArea1 + TriangleArea2 + TriangleArea3 + TriangleArea4;
     }
 
     @VisibleForTesting
-    double calculateTriangleArea(double side1, double side2, double side3) {
+    double calculateTriangleArea(Point vertexes1, Point vertexes2, Point vertexes3) {
+        double side1 = MathHelper.length(vertexes1, vertexes2);
+        double side2 = MathHelper.length(vertexes2, vertexes3);
+        double side3 = MathHelper.length(vertexes3, vertexes1);
         double p = (side1 + side2 + side3) / 2.0;
         return Math.sqrt(p * (p - side1) * (p - side2) * (p - side3));
     }
@@ -42,27 +39,4 @@ public class TetrahedronCalculator {
         return (1.0 / 6.0) * MathHelper.determinant(tetrahedron.getVertexes());
     }
 
-    public double getSideAB() {
-        return sideAB;
-    }
-
-    public double getSideBC() {
-        return sideBC;
-    }
-
-    public double getSideCA() {
-        return sideCA;
-    }
-
-    public double getSideAD() {
-        return sideAD;
-    }
-
-    public double getSideBD() {
-        return sideBD;
-    }
-
-    public double getSideCD() {
-        return sideCD;
-    }
 }

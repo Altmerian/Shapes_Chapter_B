@@ -1,97 +1,93 @@
-2019-11-19 21:17:42,637 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:17:42,652 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
-2019-11-19 21:22:25,021 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
-2019-11-19 21:22:25,021 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
-2019-11-19 21:22:25,021 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1.0, -3.0, 2.0), (5.0, -3.0, 0.0), (-1.0, -3.0, -3.0), (2.0, 4.0, 1.0)]
-2019-11-19 21:22:25,037 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
-2019-11-19 21:22:25,037 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2.0, 1.0, 4.0), (-2.0, 5.0, 4.0), (-2.0, -1.0, 4.0), (-2.0, 1.0, 4.0)]
-2019-11-19 21:22:25,037 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2.0, 1.0, 3.0), (4.0, 5.0, 6.0)]
-2019-11-19 21:22:25,037 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:22:25,037 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
-2019-11-19 21:22:25,053 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
-2019-11-19 21:22:25,053 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
-by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
-	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42) ~[classes/:?]
-	at by.epam.pavelshakhlovich.shape.inputdata.DataParserTest.testEmptyDataException(DataParserTest.java:60) ~[test-classes/:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_221]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_221]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_221]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_221]
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128) ~[testng-7.0.0.jar:?]
-	at java.util.ArrayList.forEach(ArrayList.java:1257) [?:1.8.0_221]
-	at org.testng.TestRunner.privateRun(TestRunner.java:770) [testng-7.0.0.jar:?]
-	at org.testng.TestRunner.run(TestRunner.java:591) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.run(SuiteRunner.java:304) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.runSuites(TestNG.java:1032) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.run(TestNG.java:1000) [testng-7.0.0.jar:?]
-	at org.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:73) [testng-plugin.jar:?]
-	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:123) [testng-plugin.jar:?]
-2019-11-19 21:22:25,059 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:22:25,075 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
-2019-11-19 21:31:05,617 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
-2019-11-19 21:31:05,617 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
-2019-11-19 21:31:05,617 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1.0, -3.0, 2.0), (5.0, -3.0, 0.0), (-1.0, -3.0, -3.0), (2.0, 4.0, 1.0)]
-2019-11-19 21:31:05,633 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
-2019-11-19 21:31:05,633 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2.0, 1.0, 4.0), (-2.0, 5.0, 4.0), (-2.0, -1.0, 4.0), (-2.0, 1.0, 4.0)]
-2019-11-19 21:31:05,633 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2.0, 1.0, 3.0), (4.0, 5.0, 6.0)]
-2019-11-19 21:31:05,633 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:31:05,639 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
-2019-11-19 21:31:05,639 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
-2019-11-19 21:31:05,639 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
-by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
-	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42) ~[classes/:?]
-	at by.epam.pavelshakhlovich.shape.inputdata.DataParserTest.testEmptyDataException(DataParserTest.java:60) ~[test-classes/:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_221]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_221]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_221]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_221]
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146) ~[testng-7.0.0.jar:?]
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128) ~[testng-7.0.0.jar:?]
-	at java.util.ArrayList.forEach(ArrayList.java:1257) [?:1.8.0_221]
-	at org.testng.TestRunner.privateRun(TestRunner.java:770) [testng-7.0.0.jar:?]
-	at org.testng.TestRunner.run(TestRunner.java:591) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunner.run(SuiteRunner.java:304) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53) [testng-7.0.0.jar:?]
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.runSuites(TestNG.java:1032) [testng-7.0.0.jar:?]
-	at org.testng.TestNG.run(TestNG.java:1000) [testng-7.0.0.jar:?]
-	at org.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:73) [testng-plugin.jar:?]
-	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:123) [testng-plugin.jar:?]
-2019-11-19 21:31:05,655 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:31:05,655 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+2019-11-20 10:28:28,871 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
+ 2019-11-20 10:28:28,900 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 10:28:28,908 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
+ 2019-11-20 10:28:28,910 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
+ 2019-11-20 10:28:28,911 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
+ TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
+ 2019-11-20 10:28:28,912 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
+ UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
+ 2019-11-20 10:28:28,913 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 10:28:28,934 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+ 2019-11-20 10:28:28,954 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
+ 2019-11-20 10:28:28,954 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
+ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
+	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42)2019-11-20 10:28:28,975 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 10:28:28,987 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 10:54:29,307 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
+ 2019-11-20 10:54:29,323 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 10:54:29,335 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
+ 2019-11-20 10:54:29,337 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
+ 2019-11-20 10:54:29,338 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
+ TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
+ 2019-11-20 10:54:29,339 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
+ UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
+ 2019-11-20 10:54:29,341 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 10:54:29,362 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+ 2019-11-20 10:54:29,410 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
+ 2019-11-20 10:54:29,413 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
+ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
+	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42)2019-11-20 10:54:29,424 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 10:54:29,465 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 11:58:29,999 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
+ 2019-11-20 11:58:30,017 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 11:58:30,032 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
+ 2019-11-20 11:58:30,033 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
+ 2019-11-20 11:58:30,035 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
+ TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
+ 2019-11-20 11:58:30,036 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
+ UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
+ 2019-11-20 11:58:30,038 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 11:58:30,060 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+ 2019-11-20 11:58:30,081 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
+ 2019-11-20 11:58:30,081 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
+ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
+	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42)2019-11-20 11:58:30,100 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 11:58:30,130 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 12:00:11,775 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
+ 2019-11-20 12:00:11,792 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 12:00:11,804 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
+ 2019-11-20 12:00:11,806 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
+ 2019-11-20 12:00:11,808 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
+ TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
+ 2019-11-20 12:00:11,809 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
+ UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
+ 2019-11-20 12:00:11,811 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 12:00:11,829 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+ 2019-11-20 12:00:11,858 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
+ 2019-11-20 12:00:11,858 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
+ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
+	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42)2019-11-20 12:00:11,868 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 12:00:11,897 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 12:07:18,417 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 12:16:57,720 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] Catching
+ java.nio.file.NoSuchFileException: data\testData.txt
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79)2019-11-20 12:18:10,053 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] Catching
+ java.nio.file.NoSuchFileException: data\testData.txt
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79)2019-11-20 12:21:28,786 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "test\data\testData.txt" 
+ 2019-11-20 12:33:52,836 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
+ 2019-11-20 12:33:52,848 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
+ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
+	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42)2019-11-20 12:33:52,867 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 12:33:52,900 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "test\data\testData.txt" 
+ 2019-11-20 12:33:52,904 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 2019-11-20 12:36:39,503 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
+ 2019-11-20 12:36:39,518 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
+ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
+	at by.epam.pavelshakhlovich.shape.inputdata.DataParser.parseData(DataParser.java:42)2019-11-20 12:36:39,538 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
+ TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
+ 2019-11-20 12:36:39,571 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "test\data\testData.txt" 
+ 2019-11-20 12:36:39,574 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
+ 

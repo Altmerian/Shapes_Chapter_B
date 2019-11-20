@@ -60,7 +60,6 @@ public class DataParserTest {
         parser.parseData(lines);
     }
 
-
     @Test
     public void testParseData() {
         List<String> lines = new ArrayList<>();

@@ -20,6 +20,19 @@ public class Tetrahedron extends Shape {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tetrahedron)) return false;
+        Tetrahedron that = (Tetrahedron) o;
+        return Arrays.deepEquals(vertexes, that.vertexes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(vertexes);
+    }
+
+    @Override
     public String toString() {
         return "Tetrahedron {" +
                 "vertexes = " + Arrays.toString(vertexes) +
