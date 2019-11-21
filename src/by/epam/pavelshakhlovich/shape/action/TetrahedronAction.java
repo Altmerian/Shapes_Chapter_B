@@ -53,7 +53,7 @@ public class TetrahedronAction {
 
     @VisibleForTesting
     boolean isDegenerate() {
-        Point[] vertexes = tetrahedron.getVertexes();
+        Point[] vertexes = tetrahedron.getPoints();
         double x = vertexes[0].getX();
         boolean xCause = true;
         for (int i = 1; i < 4; i++) {
@@ -85,7 +85,7 @@ public class TetrahedronAction {
 
     @VisibleForTesting
     Optional<Map<String, Double>> findIntersectionFactors() {
-        Point[] vertexes = tetrahedron.getVertexes();
+        Point[] vertexes = tetrahedron.getPoints();
         Map<String, Double> intersectionFactors = new HashMap<>();
 
         int xCause = 0;
@@ -162,7 +162,7 @@ public class TetrahedronAction {
     @VisibleForTesting
     List<String> lieOnCoordinatePlane() {
         List<String> coordinatePlaneNames = new ArrayList<>();
-        Point[] vertexes = tetrahedron.getVertexes();
+        Point[] vertexes = tetrahedron.getPoints();
         int xCause = 0;
         for (int i = 0; i < 4; i++) {
             if (vertexes[i].getX() == 0) {

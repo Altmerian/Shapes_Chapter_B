@@ -34,7 +34,7 @@ public class TetrahedronCalculatorTest {
     public void testCalculateTriangleArea() {
         double excepted = 24.64751508773248;
         double actual = calculator.calculateTriangleArea(
-                tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
+                tetrahedron.getPoints()[1], tetrahedron.getPoints()[2], tetrahedron.getPoints()[3]);
         assertEquals(actual, excepted, 0.000_001);
     }
 
