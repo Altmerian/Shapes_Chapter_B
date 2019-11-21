@@ -5,8 +5,8 @@ import by.epam.pavelshakhlovich.shape.action.TetrahedronAction;
 import java.util.Arrays;
 
 public class Tetrahedron extends Shape {
-    private Point[] vertexes = new Point[4];
 
+    private Point[] vertexes = new Point[4];
 
     public Tetrahedron(Point[] vertexes) {
         this.vertexes = vertexes;
@@ -44,7 +44,12 @@ public class Tetrahedron extends Shape {
         new TetrahedronAction(this).doAction();
     }
 
+    public void setVertexes(Point[] vertexes) {
+        this.vertexes = vertexes;
+    }
+
     public Point[] getVertexes() {
         return vertexes;
     }
+
 }
