@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Shape implements Observable {
-    public List<Observer> observers = new ArrayList<>();
+    private Point[] points;
+    private List<Observer> observers = new ArrayList<>();
 
     public abstract void becomeChosen();
 
@@ -12,7 +13,7 @@ public abstract class Shape implements Observable {
     public void subscribe(Observer observer) {
         if(observer == null) {
             throw new NullPointerException("Null Observer");
-        } else if(!observers.contains(observer)) {
+        } else {
             observers.add(observer);
         }
     }
@@ -28,4 +29,19 @@ public abstract class Shape implements Observable {
             observer.update();
         }
     }
+
+    public Point[] getPoints() {
+        return points;
+    }
+
+    public void setPoints(Point[] points) {
+        this.points = points;
+    }
+
+    public void notifyObservers(int id, Point[] points) {
+        for (Observer observer : observers) {
+            observer.update(id, points);
+        }
+    }
+
 }

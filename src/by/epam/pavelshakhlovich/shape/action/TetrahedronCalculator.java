@@ -5,23 +5,23 @@ import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import by.epam.pavelshakhlovich.shape.util.MathHelper;
 import com.google.common.annotations.VisibleForTesting;
 
-class TetrahedronCalculator {
+public class TetrahedronCalculator {
     private Tetrahedron tetrahedron;
 
 
-    TetrahedronCalculator(Tetrahedron tetrahedron) {
+    public TetrahedronCalculator(Tetrahedron tetrahedron) {
         this.tetrahedron = tetrahedron;
     }
 
-    double calculateSurfaceArea() {
+    public double calculateSurfaceArea() {
         double TriangleArea1 = calculateTriangleArea(
-                tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2]);
+                tetrahedron.getPoints()[0], tetrahedron.getPoints()[1], tetrahedron.getPoints()[2]);
         double TriangleArea2 = calculateTriangleArea(
-                tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
+                tetrahedron.getPoints()[0], tetrahedron.getPoints()[2], tetrahedron.getPoints()[3]);
         double TriangleArea3 = calculateTriangleArea(
-                tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[2], tetrahedron.getVertexes()[3]);
+                tetrahedron.getPoints()[1], tetrahedron.getPoints()[2], tetrahedron.getPoints()[3]);
         double TriangleArea4 = calculateTriangleArea(
-                tetrahedron.getVertexes()[0], tetrahedron.getVertexes()[1], tetrahedron.getVertexes()[3]);
+                tetrahedron.getPoints()[0], tetrahedron.getPoints()[1], tetrahedron.getPoints()[3]);
         return TriangleArea1 + TriangleArea2 + TriangleArea3 + TriangleArea4;
     }
 
@@ -34,9 +34,8 @@ class TetrahedronCalculator {
         return Math.sqrt(p * (p - side1) * (p - side2) * (p - side3));
     }
 
-    @VisibleForTesting
-    double calculateVolume() {
-        return (1.0 / 6.0) * MathHelper.determinant(tetrahedron.getVertexes());
+    public double calculateVolume() {
+        return (1.0 / 6.0) * MathHelper.determinant(tetrahedron.getPoints());
     }
 
 }
