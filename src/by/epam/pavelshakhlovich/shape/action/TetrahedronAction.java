@@ -50,9 +50,7 @@ public class TetrahedronAction {
         }
     }
 
-
-    @VisibleForTesting
-    boolean isDegenerate() {
+    public boolean isDegenerate() {
         Point[] vertexes = tetrahedron.getPoints();
         double x = vertexes[0].getX();
         boolean xCause = true;

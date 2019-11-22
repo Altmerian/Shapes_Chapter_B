@@ -3,17 +3,17 @@ package by.epam.pavelshakhlovich.shape.entity;
 import java.util.Arrays;
 
 public class UnknownShape extends Shape {
-    private Point[] vertexes = new Point[2];
+    private Point[] points = new Point[2];
 
 
     public UnknownShape(Point[] points) {
-        this.vertexes = points;
+        this.points = points;
     }
 
     @Override
     public String toString() {
         return "UnknownShape {" +
-                "points = " + Arrays.toString(vertexes) +
+                "points = " + Arrays.toString(points) +
                 '}';
     }
 
@@ -22,8 +22,8 @@ public class UnknownShape extends Shape {
         System.out.printf("Sorry, logic for %s is not ready yet.\n", this.getClass().getSimpleName());
     }
 
-    public Point[] getVertexes() {
-        return vertexes;
+    public Point[] getPoints() {
+        return points;
     }
 
 }
