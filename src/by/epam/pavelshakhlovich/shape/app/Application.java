@@ -1,6 +1,8 @@
 package by.epam.pavelshakhlovich.shape.app;
 
+import by.epam.pavelshakhlovich.shape.datastorage.Repository;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
+import by.epam.pavelshakhlovich.shape.observer.Warehouse;
 import by.epam.pavelshakhlovich.shape.factory.ShapeFactory;
 import by.epam.pavelshakhlovich.shape.inputdata.ParsedData;
 import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
@@ -17,6 +19,8 @@ public class Application {
 
     public static void implementLogic (){
         logger.traceEntry();
+        Repository.getInstance().subscribe(Warehouse.getInstance());
+
         Path path = Paths.get("data/data.txt");
         List<String> stringData = new DataReader().readLinesFromFile(path);
         ParsedData parsedData = new DataParser().parseData(stringData);
@@ -27,6 +31,8 @@ public class Application {
             System.out.println("\nSHAPE - " + shape);
             shape.becomeChosen();
         }
+
+
         logger.traceExit();
     }
 
