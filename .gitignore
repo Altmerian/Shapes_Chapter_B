@@ -27,7 +27,7 @@ crashlytics-build.properties
 fabric.properties
 
 # IntelliJ
-./out/
-./target/
-./idea/
-./logs/
+out/
+target/
+.idea/
+logs/

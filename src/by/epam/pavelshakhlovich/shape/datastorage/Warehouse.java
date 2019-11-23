@@ -1,37 +1,40 @@
-package by.epam.pavelshakhlovich.shape.observer;
+package by.epam.pavelshakhlovich.shape.datastorage;
 
 import by.epam.pavelshakhlovich.shape.action.TetrahedronCalculator;
-import by.epam.pavelshakhlovich.shape.datastorage.Event;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Warehouse implements Observer {
+public class Warehouse {
     private static Warehouse instance;
     private Map<Integer, ShapeData> shapesData = new HashMap<>();
+    private static Logger logger = LogManager.getLogger();
 
-    private Warehouse() {}
+    private Warehouse() {
+    }
 
     public static Warehouse getInstance() {
         return instance == null ? instance = new Warehouse() : instance;
     }
 
-    @Override
-    public void update(Event event, int id, Shape shape) {
+    public void receiveNotification(Event event, int id, Shape shape) {
         switch (event) {
             case ADD: {
-                ShapeData shapeData = new ShapeData(shape.getRuntimeType(), shape.getPoints());
+                ShapeData shapeData = new ShapeData(shape.getClass().getSimpleName(), shape.getPoints());
                 Double[] values = calculateData(shape);
                 shapeData.setSurfaceArea(values[0]);
                 shapeData.setVolume(values[1]);
                 shapesData.put(id, shapeData);
 
             }
-            case REMOVE:{
-
+            case REMOVE: {
+                shapesData.remove(id);
             }
             case UPDATE: {
                 ShapeData shapeData = shapesData.get(id);
@@ -39,7 +42,9 @@ public class Warehouse implements Observer {
                 Double[] values = calculateData(shape);
                 shapeData.setSurfaceArea(values[0]);
                 shapeData.setVolume(values[1]);
+                shapesData.put(id, shapeData);
             }
+
         }
 
 
@@ -52,7 +57,7 @@ public class Warehouse implements Observer {
             values[0] = calculator.calculateSurfaceArea();
             values[1] = calculator.calculateVolume();
         } else {
-            throw new IllegalArgumentException("Unknown shape type!");
+            throw logger.throwing(Level.ERROR, new IllegalArgumentException("Unknown shape type!"));
         }
         return values;
     }

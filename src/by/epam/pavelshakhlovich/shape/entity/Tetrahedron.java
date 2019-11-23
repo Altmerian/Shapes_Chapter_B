@@ -6,17 +6,12 @@ import java.util.Arrays;
 
 public class Tetrahedron extends Shape {
 
-    private Point[] points = new Point[4];
-
     public Tetrahedron(Point[] points) {
-        this.points = points;
+      super(points);
     }
 
     public Tetrahedron(Point pointA, Point pointB, Point pointC, Point pointD) {
-        this.points[0] = pointA;
-        this.points[1] = pointB;
-        this.points[2] = pointC;
-        this.points[3] = pointD;
+        super(new Point[]{pointA, pointB, pointC, pointD});
     }
 
     @Override

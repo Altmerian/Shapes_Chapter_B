@@ -1,12 +1,13 @@
 package by.epam.pavelshakhlovich.shape.app;
 
 import by.epam.pavelshakhlovich.shape.datastorage.Repository;
+import by.epam.pavelshakhlovich.shape.datastorage.Warehouse;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
-import by.epam.pavelshakhlovich.shape.observer.Warehouse;
 import by.epam.pavelshakhlovich.shape.factory.ShapeFactory;
-import by.epam.pavelshakhlovich.shape.inputdata.ParsedData;
 import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
 import by.epam.pavelshakhlovich.shape.inputdata.DataReader;
+import by.epam.pavelshakhlovich.shape.inputdata.ParsedData;
+import by.epam.pavelshakhlovich.shape.observer.RepositoryWatcher;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,9 +18,11 @@ import java.util.List;
 public class Application {
     private static Logger logger = LogManager.getLogger();
 
-    public static void implementLogic (){
+    public static void main(String[] args) {
         logger.traceEntry();
-        Repository.getInstance().subscribe(Warehouse.getInstance());
+        RepositoryWatcher watcher = new RepositoryWatcher();
+        Repository.getInstance().subscribe(watcher);
+        watcher.attachToWarehouse(Warehouse.getInstance());
 
         Path path = Paths.get("data/data.txt");
         List<String> stringData = new DataReader().readLinesFromFile(path);
@@ -28,11 +31,8 @@ public class Application {
         for (int i = 0; i < parsedData.getShapeTypes().size(); i++) {
             Shape shape = factory.createShape(
                     parsedData.getShapeTypes().get(i), parsedData.getPointsGroups().get(i));
-            System.out.println("\nSHAPE - " + shape);
-            shape.becomeChosen();
+            Repository.getInstance().add(shape);
         }
-
-
         logger.traceExit();
     }
 

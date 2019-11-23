@@ -1,6 +1,7 @@
 package by.epam.pavelshakhlovich.shape.action;
 
 import by.epam.pavelshakhlovich.shape.entity.Point;
+import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import org.testng.annotations.Test;
 

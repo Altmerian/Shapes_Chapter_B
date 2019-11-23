@@ -4,6 +4,9 @@ import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 import by.epam.pavelshakhlovich.shape.util.MathHelper;
 import com.google.common.annotations.VisibleForTesting;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,6 +15,7 @@ public class TetrahedronAction {
     private Tetrahedron tetrahedron;
     private TetrahedronCalculator calculator;
     private double volume;
+    private static Logger logger = LogManager.getLogger();
 
     public TetrahedronAction(Tetrahedron tetrahedron) {
         this.tetrahedron = tetrahedron;
@@ -21,23 +25,23 @@ public class TetrahedronAction {
     public void doAction() {
 
         if (isDegenerate()) {
-            System.out.print("One or more vertexes have the same coordinates or all vertexes lie at the same plane.");
-            System.out.println(" Tetrahedron is degenerate and doesn`t have any surface area or volume!");
+            logger.warn("One or more vertexes have the same coordinates or all vertexes lie at the same plane. " +
+                    "\nTetrahedron is degenerate and doesn`t have any surface area or volume!");
             return;
         } else {
-            System.out.printf("Surface area: %f m2", calculator.calculateSurfaceArea());
             volume = calculator.calculateVolume();
-            System.out.printf(", volume: %f m3\n", volume);
+            logger.printf(Level.INFO, "Surface area: %f m2, volume: %f m3",
+                    calculator.calculateSurfaceArea(), volume);
         }
 
         if (findIntersectionFactors().isPresent()) {
             Map<String, Double> factors = findIntersectionFactors().get();
             calculateVolumeParts(factors);
         } else if (!lieOnCoordinatePlane().isEmpty()) {
-            System.out.println("Basis of the Tetrahedron lies on the coordinate planes: " +
+            logger.info("Basis of the Tetrahedron lies on the coordinate planes: " +
                     lieOnCoordinatePlane().toString());
         } else {
-            System.out.println("The Tetrahedron does not intersect with any coordinate plane.");
+            logger.info("The Tetrahedron does not intersect with any coordinate plane.");
         }
     }
 
@@ -45,14 +49,13 @@ public class TetrahedronAction {
     private void calculateVolumeParts(Map<String, Double> factors) {
         for (Map.Entry<String, Double> factor : factors.entrySet()) {
             double upperVolume = volume * Math.pow(factor.getValue(), 3);
-            System.out.printf("Coordinate plane %s divides the Tetrahedron onto two shapes with volumes %f m3/ %f m3\n",
+            logger.printf(Level.INFO,
+                    "Coordinate plane %s divides the Tetrahedron onto two shapes with volumes %f m3/ %f m3",
                     factor.getKey(), upperVolume, volume - upperVolume);
         }
     }
 
-
-    @VisibleForTesting
-    boolean isDegenerate() {
+    public boolean isDegenerate() {
         Point[] vertexes = tetrahedron.getPoints();
         double x = vertexes[0].getX();
         boolean xCause = true;

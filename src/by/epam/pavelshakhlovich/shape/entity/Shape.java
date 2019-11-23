@@ -1,11 +1,11 @@
 package by.epam.pavelshakhlovich.shape.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Shape {
-    private Point[] points;
+    protected Point[] points;
 
+    public Shape(Point[] points) {
+        this.points = points;
+    }
 
     public abstract void becomeChosen();
 
@@ -16,11 +16,5 @@ public abstract class Shape {
     public void setPoints(Point[] points) {
         this.points = points;
     }
-
-    public String getRuntimeType() {
-        return this.getClass().getSimpleName();
-    }
-
-
 
 }

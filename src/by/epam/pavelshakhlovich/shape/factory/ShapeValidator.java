@@ -1,4 +1,4 @@
-package by.epam.pavelshakhlovich.shape.datastorage;
+package by.epam.pavelshakhlovich.shape.factory;
 
 import by.epam.pavelshakhlovich.shape.action.TetrahedronAction;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
