@@ -2,7 +2,7 @@ package by.epam.pavelshakhlovich.shape.app;
 
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.factory.ShapeFactory;
-import by.epam.pavelshakhlovich.shape.inputdata.DataObject;
+import by.epam.pavelshakhlovich.shape.inputdata.ParsedData;
 import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
 import by.epam.pavelshakhlovich.shape.inputdata.DataReader;
 import org.apache.logging.log4j.LogManager;
@@ -19,11 +19,11 @@ public class Application {
         logger.traceEntry();
         Path path = Paths.get("data/data.txt");
         List<String> stringData = new DataReader().readLinesFromFile(path);
-        DataObject dataObject = new DataParser().parseData(stringData);
+        ParsedData parsedData = new DataParser().parseData(stringData);
         ShapeFactory factory = new ShapeFactory();
-        for (int i = 0; i < dataObject.getShapeTypes().size(); i++) {
+        for (int i = 0; i < parsedData.getShapeTypes().size(); i++) {
             Shape shape = factory.createShape(
-                    dataObject.getShapeTypes().get(i), dataObject.getPointsGroups().get(i));
+                    parsedData.getShapeTypes().get(i), parsedData.getPointsGroups().get(i));
             System.out.println("\nSHAPE - " + shape);
             shape.becomeChosen();
         }

@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DataObject {
+public class ParsedData {
 
     private List<ShapeType> shapeTypes = new ArrayList<>();
     private List<Point[]> pointsGroups = new ArrayList<>();
 
-    public DataObject() {
+    public ParsedData() {
     }
 
     public List<ShapeType> getShapeTypes() {
@@ -23,7 +23,7 @@ public class DataObject {
         return pointsGroups;
     }
 
-    public DataObject(List<ShapeType> shapeTypes, List<Point[]> pointsGroups) {
+    public ParsedData(List<ShapeType> shapeTypes, List<Point[]> pointsGroups) {
         this.shapeTypes = shapeTypes;
         this.pointsGroups = pointsGroups;
     }
@@ -39,12 +39,12 @@ public class DataObject {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof DataObject)) return false;
+        if (!(obj instanceof ParsedData)) return false;
 
-        DataObject dataObject = (DataObject) obj;
+        ParsedData parsedData = (ParsedData) obj;
 
-        if (!shapeTypes.equals(dataObject.shapeTypes)) return false;
-        return Arrays.deepEquals(pointsGroups.toArray(), (dataObject.pointsGroups.toArray()));
+        if (!shapeTypes.equals(parsedData.shapeTypes)) return false;
+        return Arrays.deepEquals(pointsGroups.toArray(), (parsedData.pointsGroups.toArray()));
     }
 
     @Override

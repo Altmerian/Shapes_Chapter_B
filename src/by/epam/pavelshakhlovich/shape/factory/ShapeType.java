@@ -12,7 +12,7 @@ public enum ShapeType {
         this.regex = regex;
     }
 
-    public int getPointsQuantity() {
+    public int getPointsCount() {
         return pointsQuantity;
     }
 

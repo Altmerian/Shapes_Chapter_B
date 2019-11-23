@@ -78,15 +78,8 @@ public class TetrahedronAction {
                 break;
             }
         }
-        HashSet<Point> equalTestSet = new HashSet<>();
-        equalTestSet.add(tetrahedron.getVertexes()[0]);
-        boolean pointsEqualCause = false;
-        for (int i = 1; i < 4; i++) {
-            if (!equalTestSet.add(tetrahedron.getVertexes()[i])) {
-                pointsEqualCause = true;
-                break;
-            }
-        }
+        HashSet<Point> equalTestSet = new HashSet<>(Arrays.asList(vertexes));
+        boolean pointsEqualCause = equalTestSet.size() != vertexes.length;
         return xCause || yCause || zCause || pointsEqualCause;
     }
 

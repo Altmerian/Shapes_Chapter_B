@@ -31,10 +31,11 @@ public class Point {
     @Override
     public int hashCode() {
         int result;
-        result = (int) x;
-        result = 31 * result + (int) y;
-        result = 31 * result + (int) z;
-        return result * 7;
+        result = Double.hashCode(x);
+        result = 31 * result + Double.hashCode(y);
+        result = 31 * result + Double.hashCode(z);
+        return result;
+
     }
 
     public double getX() {

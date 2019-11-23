@@ -68,8 +68,8 @@ public class DataParserTest {
         expectedShapes.add(ShapeType.TETRAHEDRON);
         List<Point[]> expectedPointsGroup = new ArrayList<>();
         expectedPointsGroup.add(pointsExpected);
-        DataObject expected = new DataObject(expectedShapes, expectedPointsGroup);
-        DataObject actual = parser.parseData(lines);
+        ParsedData expected = new ParsedData(expectedShapes, expectedPointsGroup);
+        ParsedData actual = parser.parseData(lines);
         Assert.assertEquals(actual, expected);
     }
 }

@@ -7,7 +7,6 @@ import com.google.common.annotations.VisibleForTesting;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,8 +23,8 @@ public class DataParser {
      * @return valid data or throws {@link EmptyDataException}
      */
 
-    public DataObject parseData(List<String> lines) {
-        DataObject data = new DataObject();
+    public ParsedData parseData(List<String> lines) {
+        ParsedData data = new ParsedData();
         for (String line : lines) {
             Optional<ShapeType> type = parseShapeType(line);
             if (type.isPresent()) {
@@ -60,12 +59,12 @@ public class DataParser {
     Point[] parsePoints(String line, ShapeType shapeType) {
         Pattern pattern = Pattern.compile(shapeType.getRegex());
         Matcher matcher = pattern.matcher(line);
-        String src = "";
+        String lineWithPoints = "";
         if (matcher.matches()) {
-            src = matcher.group(2);
+            lineWithPoints = matcher.group(2);
         }
-        String[] source = src.trim().split("[;\\s]+");
-        Point[] points = new Point[shapeType.getPointsQuantity()];
+        String[] source = lineWithPoints.trim().split("[;\\s]+");
+        Point[] points = new Point[shapeType.getPointsCount()];
         for (int i = 0; i < points.length; i++) {
             points[i] = new Point(
                     Double.parseDouble(source[i * 3]),
