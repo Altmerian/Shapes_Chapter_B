@@ -15,10 +15,6 @@ public class UnknownShape extends Shape {
                 '}';
     }
 
-    @Override
-    public void becomeChosen() {
-    }
-
     public Point[] getPoints() {
         return points;
     }

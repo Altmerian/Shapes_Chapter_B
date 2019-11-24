@@ -1,7 +1,5 @@
 package by.epam.pavelshakhlovich.shape.entity;
 
-import by.epam.pavelshakhlovich.shape.action.TetrahedronAction;
-
 import java.util.Arrays;
 
 public class Tetrahedron extends Shape {
@@ -32,11 +30,6 @@ public class Tetrahedron extends Shape {
         return "Tetrahedron {" +
                 "vertexes = " + Arrays.toString(points) +
                 '}';
-    }
-
-    @Override
-    public void becomeChosen() {
-        new TetrahedronAction(this).doAction();
     }
 
 }
