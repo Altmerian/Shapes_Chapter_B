@@ -23,7 +23,6 @@ public class Application {
         RepositoryWatcher watcher = new RepositoryWatcher();
         Repository.getInstance().subscribe(watcher);
         watcher.attachToWarehouse(Warehouse.getInstance());
-
         Path path = Paths.get("data/data.txt");
         List<String> stringData = new DataReader().readLinesFromFile(path);
         ParsedData parsedData = new DataParser().parseData(stringData);

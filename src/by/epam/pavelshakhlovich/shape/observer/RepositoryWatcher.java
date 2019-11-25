@@ -11,9 +11,9 @@ public class RepositoryWatcher implements Observer {
     private final List<Warehouse> warehouses = new ArrayList<>();
 
     @Override
-    public void notify(Event event, int id, Shape shape) {
+    public void notify(Event event, Shape shape) {
         for (Warehouse warehouse : warehouses) {
-            warehouse.receiveNotification(event, id, shape);
+            warehouse.receiveNotification(event, shape);
         }
     }
 

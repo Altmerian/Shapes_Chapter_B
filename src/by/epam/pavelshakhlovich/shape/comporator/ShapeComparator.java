@@ -22,6 +22,11 @@ public class ShapeComparator implements Comparator<Shape> {
     @Override
     public int compare(Shape shape1, Shape shape2) {
         switch (comparingType) {
+            case ID: {
+                int id1 = shape1.getId();
+                int id2 = shape2.getId();
+                return Integer.compare(id1, id2);
+            }
             case NAME: {
                 String name1 = shape1.getClass().getSimpleName();
                 String name2 = shape2.getClass().getSimpleName();
@@ -32,18 +37,18 @@ public class ShapeComparator implements Comparator<Shape> {
                 double x2 = shape2.getPoints()[0].getX();
                 return Double.compare(x1, x2);
             }
-            case FIRST_POINT_Y_COORDINATE:{
+            case FIRST_POINT_Y_COORDINATE: {
                 double y1 = shape1.getPoints()[0].getY();
                 double y2 = shape2.getPoints()[0].getY();
                 return Double.compare(y1, y2);
             }
-            case FIRST_POINT_Z_COORDINATE:{
+            case FIRST_POINT_Z_COORDINATE: {
                 double z1 = shape1.getPoints()[0].getZ();
                 double z2 = shape2.getPoints()[0].getZ();
                 return Double.compare(z1, z2);
             }
             default:
-                throw new EnumConstantNotPresentException(ComparingBy.class,comparingType.name());
+                throw new EnumConstantNotPresentException(ComparingBy.class, comparingType.name());
         }
     }
 }

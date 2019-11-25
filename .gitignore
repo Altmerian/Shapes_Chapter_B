@@ -30,4 +30,4 @@ fabric.properties
 out/
 target/
 .idea/
-logs/
+/logs/

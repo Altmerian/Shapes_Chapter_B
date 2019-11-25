@@ -1,18 +1,21 @@
 package by.epam.pavelshakhlovich.shape.datastorage;
 
+import by.epam.pavelshakhlovich.shape.comporator.ShapeComparator;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.observer.Observer;
 import by.epam.pavelshakhlovich.shape.observer.Observable;
 import by.epam.pavelshakhlovich.shape.factory.ShapeValidator;
+import by.epam.pavelshakhlovich.shape.specification.ShapeSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Repository implements Observable {
     private static int id;
-    private final Map<Integer, Shape> shapes = new HashMap<>();
+    private final List<Shape> shapes = new ArrayList<>();
     private final List<Observer> observers = new ArrayList<>();
     private static Repository instance;
     private static Logger logger = LogManager.getLogger();
@@ -24,41 +27,70 @@ public class Repository implements Observable {
         return instance == null ? instance = new Repository() : instance;
     }
 
-    public void add(Shape shape) {
-        if (ShapeValidator.isValid(shape)) {
-            shapes.put(++id, shape);
-            notifyObservers(Event.ADD, id, shape);
-            logger.info("shape was created and added to repository - \n{} ", shape);
+    public void add(Shape... shapesToAdd) {
+        for (Shape shape : shapesToAdd) {
+            if (ShapeValidator.isValid(shape)) {
+                shape.setId(++id);
+                shapes.add(shape);
+                logger.info("shape has been created and added to repository - \n{} ", shape);
+                notifyObservers(Event.ADD, shape);
+            } else {
+                logger.warn("shape is degenerate or it`s impossible to create {} from given points!",
+                        shape.getClass().getSimpleName());
+            }
+        }
+    }
+
+    /**
+     * Modify shape in the repository by setting new Points
+     *
+     * @param shape  shape to update
+     * @param points new shape {@link Point} array
+     * @return if success updated {@link Shape}, otherwise returns {@code null} if there is no such a shape in the repository
+     */
+    public Shape update(Shape shape, Point[] points) {
+        Shape shapeToUpdate = null;
+        if (shapes.contains(shape)) {
+            int index = shapes.indexOf(shape);
+            shapeToUpdate = shapes.get(index);
+            shapeToUpdate.setPoints(points);
+            if (ShapeValidator.isValid(shapeToUpdate)) {
+                shapes.set(index, shapeToUpdate);
+                logger.info("shape has been updated - \n" + shape);
+                notifyObservers(Event.UPDATE, shapeToUpdate);
+            } else {
+                logger.warn("shape is degenerate or its impossible to create {} from given points!",
+                        shape.getClass().getSimpleName());
+            }
         } else {
-            logger.warn("shape is degenerate or it`s impossible to create {} from given points!",
-                    shape.getClass().getSimpleName());
+            logger.warn("shape hasn't been founded");
         }
+        return shapeToUpdate;
     }
 
-    public void update(int id, Point[] points) {
-        Shape shape = shapes.get(id);
-        shape.setPoints(points);
-        if (ShapeValidator.isValid(shape)) {
-            shapes.put(id, shape);
-            notifyObservers(Event.UPDATE, id, shape);
-            logger.info("shape (id {}) was updated - \n{} ", id, shape);
+    public List<Shape> remove(ShapeSpecification specification) {
+        List<Shape> shapesToRemove = query(specification);
+        if (!shapesToRemove.isEmpty()) {
+            for (Shape shape : shapesToRemove) {
+                shapes.remove(shape);
+                logger.info("shape below has been removed from repository - \n" + shape);
+                notifyObservers(Event.REMOVE, shape);
+            }
         } else {
-            logger.warn("shape is degenerate or its impossible to create {} from given points!",
-                    shape.getClass().getSimpleName());
+            logger.warn("There are no shapes that match criteria in the repository");
         }
+        return shapesToRemove;
     }
 
-    public void remove(int id) {
-        if (shapes.containsKey(id)) {
-            shapes.remove(id);
-            notifyObservers(Event.REMOVE, id, null);
-            logger.info("shape (id {}) was removed from repository", id);
-        }
-        logger.warn("There is no shape with id " + id);
+    public List<Shape> query(ShapeSpecification specification) {
+        return shapes.stream()
+                .filter(specification)
+                .collect(Collectors.toList());
     }
 
-    List<Shape> query(Object specification) {
-        return null;
+    public void sort(ShapeComparator shapeComparator) {
+        shapes.sort(shapeComparator);
+        logger.info("shapes in repository have been sorted by " + shapeComparator.getComparingType());
     }
 
     @Override
@@ -76,9 +108,9 @@ public class Repository implements Observable {
     }
 
     @Override
-    public void notifyObservers(Event event, int id, Shape shape) {
+    public void notifyObservers(Event event, Shape shape) {
         for (Observer observer : observers) {
-            observer.notify(event, id, shape);
+            observer.notify(event, shape);
         }
     }
 

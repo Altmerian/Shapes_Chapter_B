@@ -9,6 +9,6 @@ public interface Observable {
 
     public void unsubscribe(Observer observer);
 
-    public void notifyObservers(Event event, int id, Shape shape);
+    public void notifyObservers(Event event, Shape shape);
 
 }

@@ -5,5 +5,5 @@ import by.epam.pavelshakhlovich.shape.entity.Shape;
 
 public interface Observer {
 
-    void notify(Event event, int id, Shape shape);
+    void notify(Event event, Shape shape);
 }

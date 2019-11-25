@@ -27,8 +27,8 @@ public class Tetrahedron extends Shape {
 
     @Override
     public String toString() {
-        return "Tetrahedron {" +
-                "vertexes = " + Arrays.toString(points) +
+        return "Tetrahedron {" +"id=" + getId() +
+                ", vertexes=" + Arrays.toString(points) +
                 '}';
     }
 

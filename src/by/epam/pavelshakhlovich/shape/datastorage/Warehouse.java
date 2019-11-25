@@ -8,12 +8,11 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Warehouse {
     private static Warehouse instance;
-    private Map<Integer, ShapeData> shapesData = new HashMap<>();
+    private final List<ShapeData> shapesData = new ArrayList<>();
     private static Logger logger = LogManager.getLogger();
 
     private Warehouse() {
@@ -23,28 +22,43 @@ public class Warehouse {
         return instance == null ? instance = new Warehouse() : instance;
     }
 
-    public void receiveNotification(Event event, int id, Shape shape) {
+    public void receiveNotification(Event event, Shape shape) {
         switch (event) {
             case ADD: {
-                ShapeData shapeData = new ShapeData(shape.getClass().getSimpleName(), shape.getPoints());
+                ShapeData shapeData = new ShapeData(shape);
                 Double[] values = calculateData(shape);
                 shapeData.setSurfaceArea(values[0]);
                 shapeData.setVolume(values[1]);
-                shapesData.put(id, shapeData);
-
+                shapesData.add(shapeData);
+                logger.info("following shape data has been added to the warehouse - \n" + shapeData);
+                break;
             }
             case REMOVE: {
-                shapesData.remove(id);
+                Optional<ShapeData> shapeDataToRemove = shapesData.stream()
+                        .filter(shapeData -> shapeData.id == shape.getId())
+                        .findAny();
+                shapeDataToRemove.ifPresent(shapesData::remove);
+                logger.info("following shape data has been removed from the warehouse - \n" +
+                        shapeDataToRemove.get());
+                break;
             }
             case UPDATE: {
-                ShapeData shapeData = shapesData.get(id);
-                shapeData.setPoints(shape.getPoints());
-                Double[] values = calculateData(shape);
-                shapeData.setSurfaceArea(values[0]);
-                shapeData.setVolume(values[1]);
-                shapesData.put(id, shapeData);
+                Optional<ShapeData> shapeDataOptional = shapesData.stream()
+                        .filter(shapeData -> shapeData.id == shape.getId())
+                        .findAny();
+                if (shapeDataOptional.isPresent()) {
+                    ShapeData shapeDataToUpdate = shapeDataOptional.get();
+                    int index = shapesData.indexOf(shapeDataToUpdate);
+                    shapeDataToUpdate.setPoints(shape.getPoints());
+                    Double[] values = calculateData(shape);
+                    shapeDataToUpdate.setSurfaceArea(values[0]);
+                    shapeDataToUpdate.setVolume(values[1]);
+                    shapesData.set(index, shapeDataToUpdate);
+                }
+                break;
             }
-
+            default:
+                throw new EnumConstantNotPresentException(Event.class, event.name());
         }
 
 
@@ -63,14 +77,30 @@ public class Warehouse {
     }
 
     private static class ShapeData {
+        private int id;
         private String shapeType;
         private Point[] points;
         private double surfaceArea;
         private double volume;
 
-        public ShapeData(String shapeType, Point[] points) {
-            this.shapeType = shapeType;
-            this.points = points;
+        public ShapeData(Shape shape) {
+            this.id = shape.getId();
+            this.shapeType = shape.getClass().getSimpleName();
+            this.points = shape.getPoints();
+        }
+
+        @Override
+        public String toString() {
+            return String.format("{id=%d, shapeType='%s', points=%s, surfaceArea=%.3f, volume=%.3f}",
+                    id, shapeType, Arrays.toString(points), surfaceArea, volume);
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
         }
 
         public String getShapeType() {
