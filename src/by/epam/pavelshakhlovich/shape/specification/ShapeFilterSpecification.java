@@ -4,6 +4,6 @@ import by.epam.pavelshakhlovich.shape.entity.Shape;
 
 import java.util.function.Predicate;
 
-public interface ShapeSpecification extends Predicate<Shape> {
+public interface ShapeFilterSpecification extends Predicate<Shape> {
 
 }

@@ -3,7 +3,7 @@ package by.epam.pavelshakhlovich.shape.entity;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class Shape implements Comparable<Shape>{
-    private int id;
+    private int id; //technical ID, doesn't affect equals and hashcode
     protected Point[] points;
 
     public Shape(Point[] points) {

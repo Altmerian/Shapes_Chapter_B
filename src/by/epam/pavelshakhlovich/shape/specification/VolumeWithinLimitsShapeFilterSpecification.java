@@ -4,11 +4,11 @@ import by.epam.pavelshakhlovich.shape.action.TetrahedronCalculator;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 
-public class VolumeWithinLimitsShapeSpecification implements ShapeSpecification {
+public class VolumeWithinLimitsShapeFilterSpecification implements ShapeFilterSpecification {
     private double lowerLimit;
     private double upperLimit;
 
-    public VolumeWithinLimitsShapeSpecification(double lowerLimit, double upperLimit) {
+    public VolumeWithinLimitsShapeFilterSpecification(double lowerLimit, double upperLimit) {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
     }

@@ -6,7 +6,7 @@ import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.observer.Observer;
 import by.epam.pavelshakhlovich.shape.observer.Observable;
 import by.epam.pavelshakhlovich.shape.factory.ShapeValidator;
-import by.epam.pavelshakhlovich.shape.specification.ShapeSpecification;
+import by.epam.pavelshakhlovich.shape.specification.ShapeFilterSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -68,7 +68,7 @@ public class Repository implements Observable {
         return shapeToUpdate;
     }
 
-    public List<Shape> remove(ShapeSpecification specification) {
+    public List<Shape> remove(ShapeFilterSpecification specification) {
         List<Shape> shapesToRemove = query(specification);
         if (!shapesToRemove.isEmpty()) {
             for (Shape shape : shapesToRemove) {
@@ -82,7 +82,7 @@ public class Repository implements Observable {
         return shapesToRemove;
     }
 
-    public List<Shape> query(ShapeSpecification specification) {
+    public List<Shape> query(ShapeFilterSpecification specification) {
         return shapes.stream()
                 .filter(specification)
                 .collect(Collectors.toList());
@@ -90,7 +90,7 @@ public class Repository implements Observable {
 
     public void sort(ShapeComparator shapeComparator) {
         shapes.sort(shapeComparator);
-        logger.info("shapes in repository have been sorted by " + shapeComparator.getComparingType());
+        logger.info("shapes in repository have been sorted by " + shapeComparator.getName());
     }
 
     @Override
