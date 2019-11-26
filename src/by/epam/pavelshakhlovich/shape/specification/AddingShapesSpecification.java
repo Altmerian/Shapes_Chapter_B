@@ -13,16 +13,15 @@ public class AddingShapesSpecification implements Function<Shape[], Shape[]> {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public Shape[] apply(Shape[] incomingShapes) {
+    public Shape[] apply(Shape...incomingShapes) {
         List<Shape> shapesToAdd = new ArrayList<>();
         for (Shape incomingShape : incomingShapes) {
             if (Repository.getInstance().contains(incomingShape)) {
-                logger.warn("shape won't add, there is equal {} in the repo already with such points: {}",
-                        incomingShape, incomingShape.getPoints());
+                logger.warn("shape won't add, there is an equal shape in the repository: \n{}", incomingShape);
             } else {
                 shapesToAdd.add(incomingShape);
             }
         }
-        return shapesToAdd.toArray(new Shape[0]);
+        return shapesToAdd.toArray(new Shape[1]);
     }
 }

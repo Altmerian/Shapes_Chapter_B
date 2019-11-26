@@ -8,6 +8,7 @@ import by.epam.pavelshakhlovich.shape.inputdata.DataParser;
 import by.epam.pavelshakhlovich.shape.inputdata.DataReader;
 import by.epam.pavelshakhlovich.shape.inputdata.ParsedData;
 import by.epam.pavelshakhlovich.shape.observer.RepositoryWatcher;
+import by.epam.pavelshakhlovich.shape.specification.AddingShapesSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,7 +31,7 @@ public class Application {
         for (int i = 0; i < parsedData.getShapeTypes().size(); i++) {
             Shape shape = factory.createShape(
                     parsedData.getShapeTypes().get(i), parsedData.getPointsGroups().get(i));
-            Repository.getInstance().add(shape);
+            Repository.getInstance().add(new AddingShapesSpecification(), shape);
         }
         logger.traceExit();
     }
