@@ -6,6 +6,9 @@ import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.observer.Observer;
 import by.epam.pavelshakhlovich.shape.observer.Observable;
 import by.epam.pavelshakhlovich.shape.factory.ShapeValidator;
+import by.epam.pavelshakhlovich.shape.specification.AddingShapesSpecification;
+import by.epam.pavelshakhlovich.shape.specification.NameEqualsSpecification;
+import by.epam.pavelshakhlovich.shape.specification.PointsEqualsSpecification;
 import by.epam.pavelshakhlovich.shape.specification.ShapeFilterSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +30,8 @@ public class Repository implements Observable {
         return instance == null ? instance = new Repository() : instance;
     }
 
-    public void add(Shape... shapesToAdd) {
+    public boolean add(AddingShapesSpecification specification, Shape...incomingShapes) {
+        Shape[] shapesToAdd = specification.apply(incomingShapes);
         for (Shape shape : shapesToAdd) {
             if (ShapeValidator.isValid(shape)) {
                 shape.setId(++id);
@@ -37,8 +41,10 @@ public class Repository implements Observable {
             } else {
                 logger.warn("shape is degenerate or it`s impossible to create {} from given points!",
                         shape.getClass().getSimpleName());
+                return false;
             }
         }
+        return true;
     }
 
     /**
@@ -69,7 +75,7 @@ public class Repository implements Observable {
     }
 
     public List<Shape> remove(ShapeFilterSpecification specification) {
-        List<Shape> shapesToRemove = query(specification);
+        List<Shape> shapesToRemove = this.query(specification);
         if (!shapesToRemove.isEmpty()) {
             for (Shape shape : shapesToRemove) {
                 shapes.remove(shape);
@@ -82,10 +88,21 @@ public class Repository implements Observable {
         return shapesToRemove;
     }
 
-    public List<Shape> query(ShapeFilterSpecification specification) {
-        return shapes.stream()
-                .filter(specification)
-                .collect(Collectors.toList());
+    public List<Shape> query(ShapeFilterSpecification ...specifications) {
+        List<Shape> matchingShapes = shapes;
+        for (ShapeFilterSpecification specification : specifications) {
+            matchingShapes = matchingShapes.stream()
+                    .filter(specification)
+                    .collect(Collectors.toList());
+        }
+        return matchingShapes;
+    }
+
+    public boolean contains(Shape incomingShape) {
+        NameEqualsSpecification nameSpecification = new NameEqualsSpecification(incomingShape.getClass().getSimpleName());
+        PointsEqualsSpecification pointsSpecification = new PointsEqualsSpecification(incomingShape.getPoints());
+        List<Shape> matchingShapes = Repository.getInstance().query(nameSpecification, pointsSpecification);
+        return !matchingShapes.isEmpty();
     }
 
     public void sort(ShapeComparator shapeComparator) {
@@ -113,5 +130,4 @@ public class Repository implements Observable {
             observer.notify(event, shape);
         }
     }
-
 }

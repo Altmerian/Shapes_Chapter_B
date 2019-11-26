@@ -27,4 +27,5 @@ public class ShapeChainedComparator extends ShapeComparator {
         }
         return 0;
     }
+
 }

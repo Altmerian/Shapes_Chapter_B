@@ -2,10 +2,10 @@ package by.epam.pavelshakhlovich.shape.specification;
 
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 
-public class NameEqualsShapeFilterSpecification implements ShapeFilterSpecification {
+public class NameEqualsSpecification implements ShapeFilterSpecification {
     private String shapeName;
 
-    public NameEqualsShapeFilterSpecification(String shapeName) {
+    public NameEqualsSpecification(String shapeName) {
         this.shapeName = shapeName;
     }
 

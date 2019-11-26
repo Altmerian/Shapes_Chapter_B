@@ -1,142 +1,19 @@
-2019-11-23 18:21:47,308 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "test\data\testData.txt" 
- 2019-11-23 18:33:13,686 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 20:35:54,287 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
- 2019-11-23 20:35:54,294 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
- 2019-11-23 20:35:54,298 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
- 2019-11-23 20:35:54,299 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
- 2019-11-23 20:35:54,299 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
- 2019-11-23 20:35:54,300 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
- 2019-11-23 20:35:54,300 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 20:51:48,189 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
- 2019-11-23 20:51:48,208 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
- 2019-11-23 20:51:48,216 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
- 2019-11-23 20:51:48,217 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
- 2019-11-23 20:51:48,219 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
- 2019-11-23 20:51:48,220 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
- 2019-11-23 20:51:48,221 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 20:51:48,310 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
- 2019-11-23 21:01:41,477 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
- 2019-11-23 21:01:41,482 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
- 2019-11-23 21:01:41,486 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
- 2019-11-23 21:01:41,486 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
- 2019-11-23 21:01:41,487 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
- 2019-11-23 21:01:41,487 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
- 2019-11-23 21:01:41,488 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 21:01:41,489 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] 
-shape was created:
-Tetrahedron {vertexes = [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]}
- 2019-11-23 21:01:41,491 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 71,502192 m2
- 2019-11-23 21:01:41,491 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] , volume: 28,000000 m3
-
- 2019-11-23 21:01:41,526 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Coordinate plane XZ divides the Tetrahedron onto two shapes with volumes 0,000000 m3/ 0,000000 m3
-
- 2019-11-23 21:01:41,526 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] 
-shape was created:
-Tetrahedron {vertexes = [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]}
- 2019-11-23 21:01:41,527 [main] WARN  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] One or more vertexes have the same coordinates or all vertexes lie at the same plane. Tetrahedron is degenerate and doesn`t have any surface area or volume!
- 2019-11-23 21:01:41,527 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] 
-shape was created:
-UnknownShape {points = [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]}
- 2019-11-23 21:01:41,527 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] 
-shape was created:
-Tetrahedron {vertexes = [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]}
- 2019-11-23 21:01:41,527 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 55,703213 m2
- 2019-11-23 21:01:41,527 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] , volume: 9,000000 m3
-
- 2019-11-23 21:01:41,527 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] The Tetrahedron does not intersect with any coordinate plane.
- 2019-11-23 21:01:41,528 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
- 2019-11-23 21:06:15,780 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
- 2019-11-23 21:06:15,786 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
- 2019-11-23 21:06:15,789 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
- 2019-11-23 21:06:15,790 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
- 2019-11-23 21:06:15,790 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
- 2019-11-23 21:06:15,791 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
- 2019-11-23 21:06:15,791 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 21:06:15,793 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]}
- 2019-11-23 21:06:15,794 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 71,502192 m2, volume: 28,000000 m3
- 2019-11-23 21:06:15,829 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Coordinate plane XZ divides the Tetrahedron onto two shapes with volumes 0,000000 m3/ 0,000000 m3
-
- 2019-11-23 21:06:15,830 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]}
- 2019-11-23 21:06:15,830 [main] WARN  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] One or more vertexes have the same coordinates or all vertexes lie at the same plane. 
-Tetrahedron is degenerate and doesn`t have any surface area or volume!
- 2019-11-23 21:06:15,830 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-UnknownShape {points = [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]}
- 2019-11-23 21:06:15,831 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]}
- 2019-11-23 21:06:15,831 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 55,703213 m2, volume: 9,000000 m3
- 2019-11-23 21:06:15,831 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] The Tetrahedron does not intersect with any coordinate plane.
- 2019-11-23 21:06:15,831 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
- 2019-11-23 21:17:50,553 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
- 2019-11-23 21:17:50,562 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
- 2019-11-23 21:17:50,567 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
- 2019-11-23 21:17:50,567 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
- 2019-11-23 21:17:50,568 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
- 2019-11-23 21:17:50,568 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
- 2019-11-23 21:17:50,569 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 21:17:50,571 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]}
- 2019-11-23 21:18:17,394 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 71,502192 m2, volume: 28,000000 m3
- 2019-11-23 21:19:48,326 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Coordinate plane XZ divides the Tetrahedron onto two shapes with volumes 0,000000 m3/ 0,000000 m3
-
- 2019-11-23 21:19:48,329 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]}
- 2019-11-23 21:19:48,329 [main] WARN  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] One or more vertexes have the same coordinates or all vertexes lie at the same plane. 
-Tetrahedron is degenerate and doesn`t have any surface area or volume!
- 2019-11-23 21:19:48,329 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-UnknownShape {points = [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]}
- 2019-11-23 21:19:48,330 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]}
- 2019-11-23 21:19:48,330 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 55,703213 m2, volume: 9,000000 m3
- 2019-11-23 21:19:48,331 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] The Tetrahedron does not intersect with any coordinate plane.
- 2019-11-23 21:19:48,331 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
- 2019-11-23 21:19:51,898 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
- 2019-11-23 21:19:51,904 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
- 2019-11-23 21:19:51,908 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
- TETRAHEDRON [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]
- 2019-11-23 21:19:51,909 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 2
- 2019-11-23 21:19:51,909 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 3 -
- TETRAHEDRON [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]
- 2019-11-23 21:19:51,910 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 4 -
- UNKNOWN [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]
- 2019-11-23 21:19:51,910 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
- TETRAHEDRON [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]
- 2019-11-23 21:19:51,912 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(1,0, -3,0, 2,0), (5,0, -3,0, 0,0), (-1,0, -3,0, -3,0), (2,0, 4,0, 1,0)]}
- 2019-11-23 21:19:51,916 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 71,502192 m2, volume: 28,000000 m3
- 2019-11-23 21:19:51,956 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Coordinate plane XZ divides the Tetrahedron onto two shapes with volumes 5,224490 m3/ 22,775510 m3
-
- 2019-11-23 21:19:51,956 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(-2,0, 1,0, 4,0), (-2,0, 5,0, 4,0), (-2,0, -1,0, 4,0), (-2,0, 1,0, 4,0)]}
- 2019-11-23 21:19:51,956 [main] WARN  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] One or more vertexes have the same coordinates or all vertexes lie at the same plane. 
-Tetrahedron is degenerate and doesn`t have any surface area or volume!
- 2019-11-23 21:19:51,957 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-UnknownShape {points = [(2,0, 1,0, 3,0), (4,0, 5,0, 6,0)]}
- 2019-11-23 21:19:51,957 [main] INFO  by.epam.pavelshakhlovich.shape.app.Application [main] shape was created:
-Tetrahedron {vertexes = [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]}
- 2019-11-23 21:19:51,958 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] Surface area: 55,703213 m2, volume: 9,000000 m3
- 2019-11-23 21:19:51,960 [main] INFO  by.epam.pavelshakhlovich.shape.action.TetrahedronAction [main] The Tetrahedron does not intersect with any coordinate plane.
- 2019-11-23 21:19:51,961 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+2019-11-25 16:23:50,938 [main] WARN  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape is degenerate or it`s impossible to create UnknownShape from given points!
+ 2019-11-25 16:23:50,959 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been created and added to repository - 
+Tetrahedron {id=2, vertexes=[(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]} 
+ 2019-11-25 16:23:50,960 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Warehouse [main] following shape data has been added to the warehouse - 
+{id=2, shapeType='Tetrahedron', points=[(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)], surfaceArea=55,703, volume=9,000}
+ 2019-11-25 16:23:50,962 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been created and added to repository - 
+Tetrahedron {id=3, vertexes=[(-3,5, 2,0, 4,0), (9,0, -5,0, 4,0), (-7,0, -6,0, -5,0), (2,0, 5,0, 4,0)]} 
+ 2019-11-25 16:23:50,964 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Warehouse [main] following shape data has been added to the warehouse - 
+{id=3, shapeType='Tetrahedron', points=[(-3,5, 2,0, 4,0), (9,0, -5,0, 4,0), (-7,0, -6,0, -5,0), (2,0, 5,0, 4,0)], surfaceArea=260,358, volume=114,000}
+ 2019-11-25 16:23:50,977 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been created and added to repository - 
+Tetrahedron {id=4, vertexes=[(-1,0, -4,0, -6,0), (-5,0, -7,0, -3,0), (-1,0, -5,0, -7,0), (-0,0, -6,0, -1,0)]} 
+ 2019-11-25 16:23:50,979 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Warehouse [main] following shape data has been added to the warehouse - 
+{id=4, shapeType='Tetrahedron', points=[(-1,0, -4,0, -6,0), (-5,0, -7,0, -3,0), (-1,0, -5,0, -7,0), (-0,0, -6,0, -1,0)], surfaceArea=36,078, volume=5,667}
+ 2019-11-25 16:23:50,981 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been created and added to repository - 
+Tetrahedron {id=5, vertexes=[(2,0, 4,0, 15,0), (22,0, -5,0, -6,0), (-5,0, -6,0, 15,0), (13,0, 11,0, 15,0)]} 
+ 2019-11-25 16:23:50,982 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Warehouse [main] following shape data has been added to the warehouse - 
+{id=5, shapeType='Tetrahedron', points=[(2,0, 4,0, 15,0), (22,0, -5,0, -6,0), (-5,0, -6,0, 15,0), (13,0, 11,0, 15,0)], surfaceArea=736,737, volume=213,500}
+ 2019-11-25 16:23:50,984 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
  
