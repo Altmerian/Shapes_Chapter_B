@@ -3,6 +3,7 @@
 
 # Compiled files
 *.class
+target/
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -34,3 +35,4 @@ fabric.properties
 
 # Logs
 /logs/
+*.log

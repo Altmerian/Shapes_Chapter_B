@@ -17,6 +17,7 @@ public class AddingShapesSpecification implements Function<Shape[], Shape[]> {
         List<Shape> shapesToAdd = new ArrayList<>();
         for (Shape incomingShape : incomingShapes) {
             if (Repository.getInstance().contains(incomingShape)) {
+
                 logger.warn("shape won't add, there is an equal shape in the repository: \n{}", incomingShape);
             } else {
                 shapesToAdd.add(incomingShape);

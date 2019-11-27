@@ -8,6 +8,7 @@ import by.epam.pavelshakhlovich.shape.factory.ShapeValidator;
 import by.epam.pavelshakhlovich.shape.observer.Observable;
 import by.epam.pavelshakhlovich.shape.observer.Observer;
 import by.epam.pavelshakhlovich.shape.specification.AddingShapesSpecification;
+import by.epam.pavelshakhlovich.shape.specification.AllShapesIncludedSpecification;
 import by.epam.pavelshakhlovich.shape.specification.IdEqualsShapeSpecification;
 import by.epam.pavelshakhlovich.shape.specification.ShapeFilterSpecification;
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +24,8 @@ public class Repository implements Observable {
     private final List<Shape> shapes = new ArrayList<>();
     private final List<Observer> observers = new ArrayList<>();
     private static Repository instance;
+    public static final AllShapesIncludedSpecification ALL_SHAPES_INCLUDED_SPECIFICATION =
+            new AllShapesIncludedSpecification();
     private static Logger logger = LogManager.getLogger();
 
     private Repository() {
@@ -81,7 +84,8 @@ public class Repository implements Observable {
                 logger.info("shape has been updated - \n" + shape);
                 notifyObservers(Event.UPDATE, shapeToUpdate);
             } else {
-                logger.warn("shape is degenerate or its impossible to create {} from given points!",
+                logger.warn("the shape hasn't been updated cause it would become degenerate or " +
+                                "it's impossible to create {} from given points!",
                         shape.getClass().getSimpleName());
             }
         } else {
@@ -91,7 +95,7 @@ public class Repository implements Observable {
     }
 
     /**
-     * Modify shape with the specified {@code Shape#id} in the repository by setting new Points for it
+     * Modifies shape with the specified {@code Shape#id} in the repository by setting new Points for it
      *
      * @param id        personal number that uniquely identifies shape in the repository
      * @param newPoints new {@link Point} array
@@ -108,7 +112,8 @@ public class Repository implements Observable {
                 logger.info("shape has been updated - \n" + shapeToUpdate);
                 notifyObservers(Event.UPDATE, shapeToUpdate);
             } else {
-                logger.warn("shape is degenerate or its impossible to create {} from given points!",
+                logger.warn("she shape hasn't been updated cause it would become degenerate or " +
+                                "it's impossible to create {} from given points!",
                         shapeToUpdate.getClass().getSimpleName());
             }
         } else {
@@ -118,7 +123,7 @@ public class Repository implements Observable {
     }
 
     /**
-     * Remove shapes that matches given specification
+     * Remove shapes that match given specification
      *
      * @param specification {@link ShapeFilterSpecification} of shapes to remove
      * @return {@code List<Shape>} of removed shapes
@@ -138,7 +143,7 @@ public class Repository implements Observable {
     }
 
     /**
-     * Makes a query to the repository to receive a shapes that matches {@link ShapeFilterSpecification}
+     * Makes a query to the repository to receive shapes that match {@link ShapeFilterSpecification}
      *
      * @param specifications single {@link ShapeFilterSpecification} or sequence of them
      * @return {@code List<Shape>} after filtering by all specifications
@@ -203,5 +208,10 @@ public class Repository implements Observable {
         for (Observer observer : observers) {
             observer.notify(event, shape);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Repository=" + shapes;
     }
 }

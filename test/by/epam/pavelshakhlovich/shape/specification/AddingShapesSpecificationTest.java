@@ -4,8 +4,9 @@ import by.epam.pavelshakhlovich.shape.datastorage.Repository;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
 
 public class AddingShapesSpecificationTest {
 
@@ -25,7 +26,7 @@ public class AddingShapesSpecificationTest {
         Shape expectedShape = tetrahedron;
         Shape[] actualShapeArray = specification.apply(tetrahedron);
         Shape actualShape = actualShapeArray[0];
-        Assert.assertEquals(actualShape, expectedShape);
+        assertEquals(actualShape, expectedShape);
     }
 
     @Test
@@ -33,7 +34,7 @@ public class AddingShapesSpecificationTest {
         Repository.getInstance().add(specification, tetrahedron);
         Shape[] actualShapeArray = specification.apply(tetrahedron);
         Shape actualShape = actualShapeArray[0];
-        Assert.assertNull(actualShape);
+        assertNull(actualShape);
     }
 
 }
