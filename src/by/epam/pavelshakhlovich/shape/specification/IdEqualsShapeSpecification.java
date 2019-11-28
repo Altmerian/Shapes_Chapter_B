@@ -2,10 +2,11 @@ package by.epam.pavelshakhlovich.shape.specification;
 
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 
-public class IdEqualsShapeSpecification implements ShapeFilterSpecification {
+public class IdEqualsShapeSpecification extends ShapeFilterSpecification {
     private int idToMatch;
 
     public IdEqualsShapeSpecification(int idToMatch) {
+        super("ID = " + idToMatch);
         this.idToMatch = idToMatch;
     }
 

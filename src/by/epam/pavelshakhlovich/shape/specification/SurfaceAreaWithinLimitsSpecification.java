@@ -4,11 +4,12 @@ import by.epam.pavelshakhlovich.shape.action.TetrahedronCalculator;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
 
-public class SurfaceAreaWithinLimitsSpecification implements ShapeFilterSpecification {
+public class SurfaceAreaWithinLimitsSpecification extends ShapeFilterSpecification {
     private double lowerLimit;
     private double upperLimit;
 
     public SurfaceAreaWithinLimitsSpecification(double lowerLimit, double upperLimit) {
+        super("surface area from" + lowerLimit + " to " + upperLimit);
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
     }

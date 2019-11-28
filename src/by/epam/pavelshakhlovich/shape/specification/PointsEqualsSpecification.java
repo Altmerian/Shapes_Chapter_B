@@ -5,10 +5,11 @@ import by.epam.pavelshakhlovich.shape.entity.Shape;
 
 import java.util.Arrays;
 
-public class PointsEqualsSpecification implements ShapeFilterSpecification {
+public class PointsEqualsSpecification extends ShapeFilterSpecification {
     private Point[] points;
 
     public PointsEqualsSpecification(Point[] points) {
+        super("points = " + Arrays.toString(points));
         this.points = points;
     }
 

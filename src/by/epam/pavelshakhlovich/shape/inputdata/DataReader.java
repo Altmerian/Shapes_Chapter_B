@@ -17,7 +17,7 @@ public class DataReader {
         List<String> lines = new ArrayList<>();
         try {
             lines = Files.readAllLines(path);
-            logger.info("data was read from file \"{}\" ", path);
+            logger.info("data has been read from file \"{}\" ", path);
         } catch (IOException e) {
             logger.catching(Level.ERROR, e);
         }

@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class AddingShapesSpecificationTest {
+public class AddingUniqueShapesSpecificationTest {
 
-    private static final AddingShapesSpecification specification = new AddingShapesSpecification();
+    private static final AddingUniqueShapesSpecification specification = new AddingUniqueShapesSpecification();
     private static Tetrahedron tetrahedron;
 
     static {

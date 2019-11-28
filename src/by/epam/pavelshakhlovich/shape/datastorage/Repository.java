@@ -7,14 +7,13 @@ import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.factory.ShapeValidator;
 import by.epam.pavelshakhlovich.shape.observer.Observable;
 import by.epam.pavelshakhlovich.shape.observer.Observer;
-import by.epam.pavelshakhlovich.shape.specification.AddingShapesSpecification;
-import by.epam.pavelshakhlovich.shape.specification.AllShapesIncludedSpecification;
-import by.epam.pavelshakhlovich.shape.specification.IdEqualsShapeSpecification;
-import by.epam.pavelshakhlovich.shape.specification.ShapeFilterSpecification;
+import by.epam.pavelshakhlovich.shape.specification.*;
+import com.google.common.annotations.VisibleForTesting;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +27,8 @@ public class Repository implements Observable {
             new AllShapesIncludedSpecification();
     private static Logger logger = LogManager.getLogger();
 
-    private Repository() {
+    @VisibleForTesting
+    Repository() {
     }
 
     public static Repository getInstance() {
@@ -44,7 +44,9 @@ public class Repository implements Observable {
      * @return {@code List<Shape>} of successfully added shapes
      */
     public List<Shape> add(AddingShapesSpecification specification, Shape... incomingShapes) {
+
         Shape[] shapesToAdd = specification.apply(incomingShapes);
+
         if (shapesToAdd[0] == null) {
             logger.warn("shape(s) won't add because there is equal shape(s) in the repo already with such points!");
             return Collections.emptyList();
@@ -74,7 +76,9 @@ public class Repository implements Observable {
      * if there is no such a shape in the repository
      */
     public Shape update(Shape shape, Point[] newPoints) {
+
         Shape shapeToUpdate = null;
+
         if (shapes.contains(shape)) {
             int index = shapes.indexOf(shape);
             shapeToUpdate = shapes.get(index);
@@ -103,7 +107,9 @@ public class Repository implements Observable {
      * if there is no such a shape in the repository
      */
     public Shape update(int id, Point[] newPoints) {
+
         Shape shapeToUpdate = query(new IdEqualsShapeSpecification(id)).get(0);
+
         if (shapeToUpdate != null) {
             shapeToUpdate.setPoints(newPoints);
             int index = shapes.indexOf(shapeToUpdate);
@@ -117,7 +123,7 @@ public class Repository implements Observable {
                         shapeToUpdate.getClass().getSimpleName());
             }
         } else {
-            logger.warn("shape hasn't been founded");
+            logger.warn("shape with ID ={} hasn't been founded", id);
         }
         return shapeToUpdate;
     }
@@ -129,15 +135,15 @@ public class Repository implements Observable {
      * @return {@code List<Shape>} of removed shapes
      */
     public List<Shape> remove(ShapeFilterSpecification specification) {
+
         List<Shape> shapesToRemove = this.query(specification);
+
         if (!shapesToRemove.isEmpty()) {
             for (Shape shape : shapesToRemove) {
                 shapes.remove(shape);
                 logger.info("shape below has been removed from repository - \n" + shape);
                 notifyObservers(Event.REMOVE, shape);
             }
-        } else {
-            logger.warn("There are no shapes that match criteria in the repository");
         }
         return shapesToRemove;
     }
@@ -149,11 +155,23 @@ public class Repository implements Observable {
      * @return {@code List<Shape>} after filtering by all specifications
      */
     public List<Shape> query(ShapeFilterSpecification... specifications) {
+
         List<Shape> matchingShapes = shapes;
+        String searchTerms = Arrays.stream(specifications)
+                .map(ShapeFilterSpecification::getSearchTerm)
+                .collect(Collectors.joining());
+
         for (ShapeFilterSpecification specification : specifications) {
             matchingShapes = matchingShapes.stream()
                     .filter(specification)
                     .collect(Collectors.toList());
+        }
+        if (matchingShapes.isEmpty()) {
+            logger.info("there are no shapes in the repository that match criteria: " +
+                    searchTerms);
+        } else {
+            logger.info("following shapes has been founded that match criteria: {} \n{}",
+                    searchTerms, matchingShapes);
         }
         return matchingShapes;
     }
@@ -200,6 +218,7 @@ public class Repository implements Observable {
 
     /**
      * Notifies subscribed observers about changing of the stored shapes state
+     *
      * @param event kind of the {@link Event}
      * @param shape changed {@link Shape}
      */

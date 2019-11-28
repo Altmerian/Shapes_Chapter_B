@@ -1,7 +1,7 @@
 2019-11-19 21:17:42,637 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
  TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
 2019-11-19 21:17:42,652 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
-2019-11-19 21:22:25,021 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
+2019-11-19 21:22:25,021 [main] TRACE by.epam.pavelshakhlovich.shape.appdemo.ApplicationDemo [main] Enter
 2019-11-19 21:22:25,021 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
 2019-11-19 21:22:25,021 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
  TETRAHEDRON [(1.0, -3.0, 2.0), (5.0, -3.0, 0.0), (-1.0, -3.0, -3.0), (2.0, 4.0, 1.0)]
@@ -12,7 +12,7 @@
  UNKNOWN [(2.0, 1.0, 3.0), (4.0, 5.0, 6.0)]
 2019-11-19 21:22:25,037 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
  TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:22:25,037 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+2019-11-19 21:22:25,037 [main] TRACE by.epam.pavelshakhlovich.shape.appdemo.ApplicationDemo [main] Exit
 2019-11-19 21:22:25,053 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
 2019-11-19 21:22:25,053 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
 by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
@@ -48,7 +48,7 @@ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid 
 2019-11-19 21:22:25,059 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
  TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
 2019-11-19 21:22:25,075 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
-2019-11-19 21:31:05,617 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Enter
+2019-11-19 21:31:05,617 [main] TRACE by.epam.pavelshakhlovich.shape.appdemo.ApplicationDemo [main] Enter
 2019-11-19 21:31:05,617 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataReader [main] data was read from file "data\data.txt" 
 2019-11-19 21:31:05,617 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 1 -
  TETRAHEDRON [(1.0, -3.0, 2.0), (5.0, -3.0, 0.0), (-1.0, -3.0, -3.0), (2.0, 4.0, 1.0)]
@@ -59,7 +59,7 @@ by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid 
  UNKNOWN [(2.0, 1.0, 3.0), (4.0, 5.0, 6.0)]
 2019-11-19 21:31:05,633 [main] INFO  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] parsing result from line 5 -
  TETRAHEDRON [(2.0, 0.0, 1.0), (5.0, 6.0, 1.0), (10.0, 9.0, 7.0), (3.0, 5.0, 1.0)]
-2019-11-19 21:31:05,639 [main] TRACE by.epam.pavelshakhlovich.shape.app.Application [main] Exit
+2019-11-19 21:31:05,639 [main] TRACE by.epam.pavelshakhlovich.shape.appdemo.ApplicationDemo [main] Exit
 2019-11-19 21:31:05,639 [main] WARN  by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] incorrect data in line 1
 2019-11-19 21:31:05,639 [main] ERROR by.epam.pavelshakhlovich.shape.inputdata.DataParser [main] Throwing
 by.epam.pavelshakhlovich.shape.exception.EmptyDataException: There are no valid data lines in the source file!
