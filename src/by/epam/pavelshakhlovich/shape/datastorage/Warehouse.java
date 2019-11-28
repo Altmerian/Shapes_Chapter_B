@@ -4,6 +4,8 @@ import by.epam.pavelshakhlovich.shape.action.TetrahedronCalculator;
 import by.epam.pavelshakhlovich.shape.entity.Point;
 import by.epam.pavelshakhlovich.shape.entity.Shape;
 import by.epam.pavelshakhlovich.shape.entity.Tetrahedron;
+import by.epam.pavelshakhlovich.shape.exception.ShapeDataNotFoundException;
+import com.google.common.annotations.VisibleForTesting;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +17,8 @@ public class Warehouse {
     private final List<ShapeData> shapesData = new ArrayList<>();
     private static Logger logger = LogManager.getLogger();
 
-    private Warehouse() {
+    @VisibleForTesting
+    Warehouse() {
     }
 
     public static Warehouse getInstance() {
@@ -64,7 +67,8 @@ public class Warehouse {
 
     }
 
-    private Double[] calculateData(Shape shape) {
+    @VisibleForTesting
+    Double[] calculateData(Shape shape) {
         Double[] values = new Double[2];
         if (shape.getClass() == Tetrahedron.class) {
             TetrahedronCalculator calculator = new TetrahedronCalculator((Tetrahedron) shape);
@@ -76,7 +80,19 @@ public class Warehouse {
         return values;
     }
 
-    private static class ShapeData {
+    public ShapeData getShapeDataById(int id) {
+        Optional<ShapeData> shapeDataOptional = shapesData.stream().filter(x -> x.id == id).findFirst();
+        if (shapeDataOptional.isPresent()) {
+            logger.info("shape data has been founded in the warehouse by ID: {} - \n{}", id, shapeDataOptional.get());
+            return shapeDataOptional.get();
+        } else {
+            throw logger.throwing(Level.WARN, new ShapeDataNotFoundException(
+                    "There is no shape data in the warehouse with ID: " + id));
+        }
+    }
+
+    @VisibleForTesting
+    static class ShapeData {
         private int id;
         private String shapeType;
         private Point[] points;
@@ -87,6 +103,31 @@ public class Warehouse {
             this.id = shape.getId();
             this.shapeType = shape.getClass().getSimpleName();
             this.points = shape.getPoints();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof ShapeData)) return false;
+
+            ShapeData shapeData = (ShapeData) obj;
+
+            if (id != shapeData.id) return false;
+            if (Double.compare(shapeData.surfaceArea, surfaceArea) != 0) return false;
+            if (Double.compare(shapeData.volume, volume) != 0) return false;
+            if (!shapeType.equals(shapeData.shapeType)) return false;
+            return Arrays.deepEquals(points, shapeData.points);
+        }
+
+        @Override
+        public int hashCode() {
+            int result;
+            result = id;
+            result = 31 * result + shapeType.hashCode();
+            result = 31 * result + Arrays.hashCode(points);
+            result = 31 * result + Double.hashCode(surfaceArea);
+            result = 31 * result + Double.hashCode(volume);
+            return 31 * result;
         }
 
         @Override

@@ -17,8 +17,9 @@ public class RepositoryWatcher implements Observer {
         }
     }
 
-    public void attachToWarehouse (Warehouse warehouse) {
+    public RepositoryWatcher attachToWarehouse (Warehouse warehouse) {
         warehouses.add(warehouse);
+        return this;
     }
 
 }
