@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="All classes tests">
+    <test name="RepositoryTest">
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="first"/>-->
+<!--                <include name="second"/>-->
+<!--                <include name="third"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+
+        <packages>
+            <package name="by.epam.pavelshakhlovich.shape.*"/>
+        </packages>
+    </test>
+</suite>
+

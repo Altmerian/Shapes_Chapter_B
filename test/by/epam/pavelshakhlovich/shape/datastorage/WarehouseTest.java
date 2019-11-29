@@ -30,28 +30,30 @@ public class WarehouseTest {
 
     }
 
-    @Test (expectedExceptions = ShapeDataNotFoundException.class, priority = -20)
+    @Test (expectedExceptions = ShapeDataNotFoundException.class)
     public void testAddAndRemoveNotification() {
         repository.add(new AddingUniqueShapesSpecification(), tetrahedron);
         repository.remove(new PointsEqualsSpecification(points));
         assertNull(warehouse.getShapeDataById(1));
     }
 
-    @Test (priority = 20)
+    @Test (dependsOnMethods = "testAddAndRemoveNotification")
     public void testUpdateNotification() {
+        Tetrahedron tetrahedron = new Tetrahedron(points);
         repository.add(new AddingUniqueShapesSpecification(), tetrahedron);
+        int expectedId = tetrahedron.getId();
         Point[] newPoints = new Point[]{
                 new Point(2.0, 5.0, 2.0),
                 new Point(5.0, 6.5, 4.0),
                 new Point(1.0, 5.0, 4.0),
                 new Point(6.0, 5.0, 4.0)};
         repository.update(tetrahedron, newPoints);
-        Warehouse.ShapeData actualData = warehouse.getShapeDataById(2);
+        Warehouse.ShapeData actualData = warehouse.getShapeDataById(expectedId);
 
         Tetrahedron updatedTetrahedron = new Tetrahedron(newPoints);
         Warehouse.ShapeData expectedData = new Warehouse.ShapeData(updatedTetrahedron);
         Double[] values = warehouse.calculateData(updatedTetrahedron);
-        expectedData.setId(2);
+        expectedData.setId(expectedId);
         expectedData.setSurfaceArea(values[0]);
         expectedData.setVolume(values[1]);
 

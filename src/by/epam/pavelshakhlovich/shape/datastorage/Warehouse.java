@@ -57,6 +57,8 @@ public class Warehouse {
                     shapeDataToUpdate.setSurfaceArea(values[0]);
                     shapeDataToUpdate.setVolume(values[1]);
                     shapesData.set(index, shapeDataToUpdate);
+                    logger.info("following shape data has been updated in the warehouse - \n" +
+                            shapeDataToUpdate);
                 }
                 break;
             }

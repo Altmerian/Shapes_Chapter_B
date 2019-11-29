@@ -1,11 +1,3 @@
-2019-11-28 14:16:52,195 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been updated - 
-Tetrahedron {id=8, vertexes=[(3,0, 2,0, 4,0), (5,0, 6,5, 4,0), (1,0, -5,0, 63,0), (6,0, 5,0, 4,0)]}
- 2019-11-28 14:16:52,231 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been created and added to repository - 
-Tetrahedron {id=9, vertexes=[(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]} 
- 2019-11-28 14:16:52,240 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] following shapes has been founded that match criteria: points = [(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)] 
-[Tetrahedron {id=9, vertexes=[(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]}]
- 2019-11-28 14:16:52,244 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] following shapes has been founded that match criteria: ID = 9 
-[Tetrahedron {id=9, vertexes=[(2,0, 0,0, 1,0), (5,0, 6,0, 1,0), (10,0, 9,0, 7,0), (3,0, 5,0, 1,0)]}]
- 2019-11-28 14:16:52,245 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been updated - 
-Tetrahedron {id=9, vertexes=[(5,0, 2,0, 4,0), (1,0, 3,5, 4,0), (-1,0, -5,0, 3,0), (0,0, 5,0, 4,0)]}
+2019-11-29 13:09:11,237 [main] INFO  by.epam.pavelshakhlovich.shape.datastorage.Repository [main] shape has been updated - 
+Tetrahedron {id=11, vertexes=[(5,0, 2,0, 4,0), (1,0, 3,5, 4,0), (-1,0, -5,0, 3,0), (0,0, 5,0, 4,0)]}
  
