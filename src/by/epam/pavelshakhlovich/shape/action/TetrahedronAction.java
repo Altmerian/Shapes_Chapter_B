@@ -26,7 +26,7 @@ public class TetrahedronAction {
 
         if (isDegenerate()) {
             logger.warn("One or more vertexes have the same coordinates or all vertexes lie at the same plane. " +
-                    "\nTetrahedron is degenerate and doesn`t have any surface area or volume!");
+                    "\nTetrahedron is degenerate and doesn't have any surface area or volume!");
             return;
         } else {
             volume = calculator.calculateVolume();

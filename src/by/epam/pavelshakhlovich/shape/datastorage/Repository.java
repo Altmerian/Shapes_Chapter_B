@@ -197,9 +197,11 @@ public class Repository implements Observable {
      *
      * @param shapeComparator {@link ShapeComparator} or {@link ShapeChainedComparator}
      */
-    public void sort(ShapeComparator shapeComparator) {
-        shapes.sort(shapeComparator);
-        logger.info("shapes in repository have been sorted by " + shapeComparator.getName());
+    public List<Shape> sort(List<Shape> shapes, ShapeComparator shapeComparator) {
+        List<Shape> shapesToSort = new ArrayList<>(shapes);
+        shapesToSort.sort(shapeComparator);
+        logger.info("shapes have been sorted by " + shapeComparator.getName());
+        return shapesToSort;
     }
 
     @Override

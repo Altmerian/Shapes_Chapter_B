@@ -28,7 +28,7 @@ public class RepositoryTest {
         points = new Point[]{point1, point2, point3, point4};
     }
 
-    @BeforeMethod (onlyForGroups = {"second"})
+    @BeforeMethod(onlyForGroups = {"second"})
     public static void setUp() {
         tetrahedron = new Tetrahedron(points);
         repository = new Repository();
@@ -44,10 +44,10 @@ public class RepositoryTest {
                 new Point(5.0, 6.5, 4.0),
                 new Point(1.0, 5.0, 4.0),
                 new Point(6.0, 5.0, 4.0)};
-        List<Shape> expectedShapeList = List.of( new Tetrahedron(points));
-        List<Shape> actualShapeList =  repository.add(new AddingUniqueShapesSpecification(), new Tetrahedron(points));
+        List<Shape> expectedShapeList = List.of(new Tetrahedron(points));
+        List<Shape> actualShapeList = repository.add(new AddingUniqueShapesSpecification(), new Tetrahedron(points));
         assertEquals(actualShapeList, expectedShapeList);
-        }
+    }
 
     @Test(groups = {"second"})
     public void testUpdate() {
@@ -121,10 +121,10 @@ public class RepositoryTest {
         FirstPointXCoordinateShapeComparator shapeComparatorX = new FirstPointXCoordinateShapeComparator();
         FirstPointYCoordinateShapeComparator shapeComparatorY = new FirstPointYCoordinateShapeComparator();
         ShapeChainedComparator chainedComparator = new ShapeChainedComparator(shapeComparatorX, shapeComparatorY);
-        repository.sort(chainedComparator);
+        List<Shape> shapesToSort = repository.query(Repository.ALL_SHAPES_INCLUDED_SPECIFICATION);
+        List<Shape> actual = repository.sort(shapesToSort, chainedComparator);
         List<Shape> expected = List.of(tetrahedron3, tetrahedron1, tetrahedron2);
-        List<Shape> actual = repository.query(Repository.ALL_SHAPES_INCLUDED_SPECIFICATION);
-        assertEquals(actual, expected);
+         assertEquals(actual, expected);
     }
 
 }
